@@ -8,6 +8,15 @@
 \contentsline {subparagraph}{PRINT "Hello World"}{5}
 \contentsline {part}{II\hspace {1em}Tutorials}{6}
 \contentsline {section}{\numberline {0.1}Quick Start}{7}
+\contentsline {subsection}{\numberline {0.1.1}First example: Hello World}{7}
+\contentsline {paragraph}{Step 1: Start a new sandbox-mode game}{7}
+\contentsline {paragraph}{Step 2: Make a vessel in the Vehicle Assembly Bay}{7}
+\contentsline {paragraph}{Step 3: Put the vessel on the launchpad}{7}
+\contentsline {paragraph}{Step 4: Invoke the terminal}{8}
+\contentsline {paragraph}{Step 5: See what an interactive command is like}{8}
+\contentsline {paragraph}{Step 6: Okay that?s great, but how can you make that happen in a program script instead?}{9}
+\contentsline {paragraph}{Step 7: Okay, but where is this program?}{10}
+\contentsline {paragraph}{Step 8: I don?t like the idea that the program is stored only on this vessel. Can?t I save it somewhere better? }{10}
 \contentsline {section}{\numberline {0.2}Design Patterns}{11}
 \contentsline {section}{\numberline {0.3}PID Loops}{11}
 \contentsline {section}{\numberline {0.4}Execute Node Script}{11}

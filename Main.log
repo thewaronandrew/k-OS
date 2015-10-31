@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 14:58
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 15:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -440,6 +440,14 @@ Package: fancyref 1999/02/03 v0.9c Fancy cross-referencing
 Package: varioref 2015/09/22 v1.5b package for extended references (FMi)
 \c@vrcnt=\count133
 ))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip51
+\fb@frw=\dimen157
+\fb@frh=\dimen158
+\FrameRule=\dimen159
+\FrameSep=\dimen160
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count134
@@ -475,27 +483,27 @@ File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 (./Addons.aux) (./Changes.aux))
 \openout1 = `Main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 28.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -503,57 +511,57 @@ LaTeX Font Info:    ... okay on input line 27.
 .................................................
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 27.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 27.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 27.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 27.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 27.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 27.
-LaTeX Font Info:    Redeclaring math accent \check on input line 27.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 27.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 27.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 27.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 28.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 28.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 28.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 28.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 28.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 28.
+LaTeX Font Info:    Redeclaring math accent \check on input line 28.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 28.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `normal' on input line 27.
+(Font)              `operators' in the math version `normal' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> EU1/lmr/m/n on input line 27.
+(Font)                  OT1/cmr/m/n --> EU1/lmr/m/n on input line 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `bold' on input line 27.
+(Font)              `operators' in the math version `bold' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> EU1/lmr/m/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> EU1/lmr/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 27.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> EU1/lmr/m/it on input line 27.
+(Font)                  OT1/cmr/m/it --> EU1/lmr/m/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> EU1/lmr/bx/n on input line 27.
+(Font)                  OT1/cmr/bx/n --> EU1/lmr/bx/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 27.
+(Font)                  OT1/cmss/m/n --> EU1/lmss/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 27.
+(Font)                  EU1/lmr/m/n --> EU1/lmr/bx/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> EU1/lmr/bx/it on input line 27.
+(Font)                  OT1/cmr/bx/it --> EU1/lmr/bx/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 27.
+(Font)                  OT1/cmss/bx/n --> EU1/lmss/bx/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 28.
 \c@lstlisting=\count136
 
 *geometry* driver: auto-detecting
@@ -590,7 +598,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 27.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -601,7 +609,7 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 39.
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 40.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/euenc/eu1lmtt.fd
 File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -611,17 +619,17 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `EU1/lmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `EU1/lmtt/b/n' tried instead on input line 39.
+(Font)              Font shape `EU1/lmtt/b/n' tried instead on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 39.
+(Font)              <7> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 39.
+(Font)              <5> on input line 40.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-Overfull \hbox (59.75037pt too wide) in paragraph at lines 39--41
+Overfull \hbox (59.75037pt too wide) in paragraph at lines 40--42
  [][][][][][] 
  []
 
@@ -654,18 +662,18 @@ File: images/terminal_open_1.png Graphic file (type QTm)
  <use  "images/terminal_open_1.png" >
 File: images/terminal_open_2.png Graphic file (type QTm)
 
-<use  "images/terminal_open_2.png" >
+<use  "images/terminal_open_2.png" > [8]
 File: images/editor.png Graphic file (type QTm)
- <use  "images/editor.png" > [8]
-Overfull \hbox (282.5133pt too wide) in paragraph at lines 55--60
-\EU1/lmr/m/n/10 HELLO WORLD”. PRINT ”THIS IS THE FIRST SCRIPT I WROTE IN kOS.”.
- PRINT ”=========================================”.
+ <use  "images/editor.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 60--64
+[]\EU1/lmr/m/n/10 PRINT ”=========================================”.
  []
 
+[9]
 File: images/hello_world1.png Graphic file (type QTm)
-<use  "images/hello_world1.png" > [9]
+ <use  "images/hello_world1.png" >
 File: images/hello_list.png Graphic file (type QTm)
- <use  "images/hello_list.png" >) [10]
+ <use  "images/hello_list.png" > [10])
 [11]
 \openout2 = `General.aux'.
 
@@ -725,12 +733,12 @@ Overfull \vbox (192.82135pt too high) has occurred while \output is active []
 (./Mathematics.aux) (./Commands.aux) (./Structures.aux) (./Addons.aux)
 (./Changes.aux)) ) 
 Here is how much of TeX's memory you used:
- 18407 strings out of 493706
- 363464 string characters out of 6145769
- 425573 words of memory out of 5000000
- 21561 multiletter control sequences out of 15000+600000
+ 18459 strings out of 493706
+ 364184 string characters out of 6145769
+ 427000 words of memory out of 5000000
+ 21609 multiletter control sequences out of 15000+600000
  3800 words of font info for 34 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 48i,6n,42p,10376b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,7n,42p,10376b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Main.pdf (21 pages).
