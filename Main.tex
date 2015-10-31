@@ -1,0 +1,62 @@
+\documentclass[letterpaper, twoside, 10pt]{report}
+
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[
+		letterpaper,
+		marginparwidth={8em}
+		]{geometry}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{fancyref}
+\usepackage{float}
+\usepackage[dvipsnames,prologue]{xcolor}
+\graphicspath{ {images/} }
+
+%%%%% FLOATS %%%%%
+\newfloat{program}{tbphH}{lop}[section]
+\floatname{program}{Program}
+
+%%%%% TITLE DEFINITION %%%%%
+\title{k-OS System Manual}
+\author{Headquarters, Kerbal Space Center}
+\date{\today}
+
+%%%%% DOCUMENT %%%%%
+\begin{document}
+
+%%%%% TITLE PAGE %%%%%
+\begin{titlepage}
+\begin{center}
+		\fboxsep10pt
+		\colorbox{gray}{\begin{minipage}{6.5in}
+		\begin{flushright}
+		\texttt{\LARGE{\textbf{ KM\,03-62}}}\\
+		\texttt{\large KERBAL SYSTEMS FIELD MANUAL}
+		\vfill
+		\end{flushright}
+		\end{minipage}}
+		\texttt{\Huge KERBAL OPERATING SYSTEM}
+		\vfill
+	\end{center}
+\end{titlepage}
+
+%%%%% LIST OF EFFECTIVE PAGES %%%%%
+
+%%%%% TABLE OF CONTENTS %%%%%
+\tableofcontents
+
+%%%%% CONTENT INCLUSION %%%%%
+\include{Introduction}
+\include{Tutorials}
+\include{General Code}
+\include{Lanuage}
+\include{Mathematics}
+\include{Commands}
+\include{Structures}
+\include{Addons}
+\include{Changes}
+
+%%%%% DOCUMENT END %%%%%
+\end{document}
