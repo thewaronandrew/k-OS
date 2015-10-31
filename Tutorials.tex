@@ -10,7 +10,9 @@ Step 1: Start a new sandbox-mode game
 Step 2: Make a vessel in the Vehicle Assembly Bay
 Make the vessel contain any unmanned command core, a few hundred units of battery power, a means of recharging the battery such as a solar panel array, and the ?Comptronix CX-4181 Scriptable Control System?. (From this point onward the CX-4181 Scriptable Control System part will be referred to by the acronym ?SCS?.) The SCS part is located in the parts bin under the ?Control? tab (the same place where RCS thrusters and Torque Wheels are found.)
 
+\begin{center}
 \includegraphics[width=3in]{SCS_parts_bin}
+\end{center}
 
 Step 3: Put the vessel on the launchpad
 Put the vessel on the launchpad. For this first example it doesn?t matter if the vessel can actually liftoff or even has engines at all.
@@ -26,11 +28,15 @@ You should now see an old-school looking text terminal like the one shown below.
 CLEARSCREEN. PRINT "==HELLO WORLD==".
 into the terminal (make sure to actually type the periods (?.?) as shown) and hit ENTER. Note that you can type it in uppercase or lowercase. kOS doesn?t care.
 
+\begin{center}
 \includegraphics[width=3in]{terminal_open_1}
+\end{center}
 
 The terminal will respond by showing you this:
 
+\begin{center}
 \includegraphics[width=3in]{terminal_open_2}
+\end{center}
 
 Step 6: Okay that?s great, but how can you make that happen in a program script instead?
 Like so: Enter this command:
@@ -40,7 +46,9 @@ EDIT HELLO.
 
 You should see an editor window appear, looking something like this (without the text inside because you?re starting a blank new file):
 
+\begin{center}
 \includegraphics[width=3in]{editor}
+\end{center}
 
 Type this text into the window:
 
@@ -56,7 +64,9 @@ Then on the main text terminal Enter:
 RUN HELLO.
 And you will see the program run, showing the text on the screen like so.
 
+\begin{center}
 \includegraphics[width=3in]{hello_world1}
+\end{center}
 
 Step 7: Okay, but where is this program?
 To see where the ?HELLO? program has been saved, Issue the command LIST FILES like this:
@@ -66,7 +76,9 @@ LIST FILES.
 
 It should look like this, showing you the HELLO program you just wrote:
 
+\begin{center}
 \includegraphics[width=3in]{hello_list.png}
+\end{center}
 
 This is a list of all the files on the currently selected VOLUME. By default, when you launch a new vessel, the currently selected VOLUME is called ?1? and it?s the volume that?s stored on THAT SCS part that you are running all these commands in.
 
