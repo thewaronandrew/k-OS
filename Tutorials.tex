@@ -25,9 +25,9 @@ Note that if the terminal is semi-transparent, this means it?s not currently sel
 \paragraph{Step 5: See what an interactive command is like}
 You should now see an old-school looking text terminal like the one shown below. Type the line:
 
-\begin{framed}
+\begin{lstlisting}[frame=single,language=XML]
 CLEARSCREEN. PRINT "==HELLO WORLD==".
-\end{framed}
+\end{lstlisting} 
 
 into the terminal (make sure to actually type the periods (?.?) as shown) and hit ENTER. Note that you can type it in uppercase or lowercase. kOS doesn?t care.
 
@@ -44,8 +44,9 @@ The terminal will respond by showing you this:
 \paragraph{Step 6: Okay that?s great, but how can you make that happen in a program script instead?}
 Like so: Enter this command:
 
-\begin{framed}EDIT HELLO.
-\end{framed}
+\begin{lstlisting}[frame=single,language=XML]
+EDIT HELLO.
+\end{lstlisting} 
 
 (Don?t forget the period (?.?). All commands in kOS are ended with a period. Again, you can type it in uppercase or lowercase. kOS doesn?t care.)
 
@@ -57,20 +58,21 @@ You should see an editor window appear, looking something like this (without the
 
 Type this text into the window:
 
-\begin{framed}PRINT "=========================================".
+\begin{lstlisting}[frame=single,language=XML]
+PRINT "=========================================".
 PRINT "      HELLO WORLD".
 PRINT "THIS IS THE FIRST SCRIPT I WROTE IN kOS.".
 PRINT "=========================================".
-\end{framed}
+\end{lstlisting} 
 
 Click ?Save? then ?Exit? in the editor popup window.
 
 Side Note: The editor font - Experienced programmers may have noticed that the editor?s font is proportional width rather than monospaced and that this is not ideal for programming work. You are right, but there is little that can be done about it for a variety of technical reasons that are too complex to go into right now.
 Then on the main text terminal Enter:
 
-\begin{framed}
+\begin{lstlisting}[frame=single,language=XML]
 RUN HELLO.
-\end{framed}
+\end{lstlisting} 
 
 And you will see the program run, showing the text on the screen like so.
 
@@ -81,7 +83,10 @@ And you will see the program run, showing the text on the screen like so.
 \paragraph{Step 7: Okay, but where is this program?}
 To see where the ?HELLO? program has been saved, Issue the command LIST FILES like this:
 
+\begin{lstlisting}[frame=single,language=XML]
 LIST FILES.
+\end{lstlisting} 
+
 (Note, that the default for the LIST command is to list FILES, so you can leave the word ?FILES? off if you like.)
 
 It should look like this, showing you the HELLO program you just wrote:
@@ -105,7 +110,7 @@ To use the Archive, first we?ll have to introduce you to a new command, called S
 
 To work with the archive, and create a second ?hello world? file there, you issue these commands and see what they do:
 
-\begin{framed}
+\begin{lstlisting}[frame=single,language=XML]
 SWITCH TO 0.
 EDIT HELLO2. // Make a new file here that just says: PRINT "hi again".
 LIST FILES.
@@ -113,7 +118,7 @@ RUN HELLO2.
 SWITCH TO 1.
 LIST FILES.
 RUN HELLO.
-\end{framed}
+\end{lstlisting} 
 
 But where is it stored behind the scenes? The archive is currently slightly violating the design of KSP mods that puts everything in the GameData folder. The kSP Archive is actually stored in the Ships/Script folder of your MAIN KSP home, not inside GameData.
 
@@ -124,6 +129,416 @@ Further reading about files and volumes:
 Volumes
 File Control
 File Information		
-	\section{Design Patterns}
+		\subsection{Second Example: Doing something real}%%%%% Next Section %%%%%
+Okay that?s all basic setup stuff but you?re probably clamoring for a real example that actually does something nifty.
+
+This example will show the crudest, most basic use of kOS just to get started. In this example we?ll make a program that will launch a vessel using progressively more and more complex checks. kOS can be used at any stage of a vessel?s flight - launching, circularizing, docking, landing,... and in fact launching is one of the simpler piloting tasks that you can do without much need of automation. Where kOS really shines is for writing scripts to do touchy sensitive tasks like landing or docking or hovering. These are the areas that can benefit from the faster reaction speed that a computer script can handle.
+
+But in order to give you an example that you can start with from scratch, that?s easy to reload and retry from an initial point, we?ll use an example of launching.
+
+\paragraph{Step 1: Make a vessel}
+Make any sort of rocket that can lift you to orbit that fills the following pattern:
+
+It uses ONLY liquid fuel rockets. The example code here will assume this is the case. kOS can deal with solid fuel boosters as well, but to keep the example simple we?ll use liquid fuel only here.
+Make the vessel?s staging list set up in the right order for a launch. (Make sure it has no need to manually rightclick parts to stage things weirdly, and no need to use action groups to activate stages weirdly).
+Make sure the vessel has plenty of torque power to stay steady without a lot of wobble.
+Make the vessel have at least these parts on it:
+battery power of at least 400 charge
+ability to recharge equal to at least 6 solar panel sections or 1 RTG unit
+the kOS SCS part somewhere in the stack, near the top bit where it won?t fall off due to staging.
+Step 2: Make the start of the script
+Okay, so type the lines below in an external text editor of your choice (i.e. Notepad on Windows, or TextEdit on Mac, or whatever you fancy):
+
+\begin{lstlisting}[frame=single,language=XML]
+// My First Launcher.
+
+PRINT "Counting down:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO {
+    PRINT "..." + countdown.
+    WAIT 1. // pauses the script here for 1 second.
+}
+\end{lstlisting} 
+
+See those things with the two slashes (?//?)? Those are comments in the kerboscript language and they?re just ways to write things in the program that don?t do anything - they?re there for humans like you to read so you understand what?s going on. In these examples you never actually have to type in the things you see after the slashes. They?re there for your benefit when reading this document but you can leave them out if you wish.
+
+Save the file in your Ships/Script folder of your KSP installation under the filename ?hellolaunch.ks?. DO NOT save it anywhere under GameData/kOS/. Do NOT. According to the KSP standard, normally KSP mods should put their files in GameData/[mod name], but kOS puts the archive outside the GameData folder because it represents content owned by you, the player, not content owned by the kOS mod.
+
+By saving the file in Ships/Script, you have actually put it in your archive volume of kOS. kOS will see it there immediately without delay. You do not need to restart the game. If you do:
+
+\begin{lstlisting}[frame=single,language=XML]
+SWITCH TO 0.
+LIST FILES.
+\end{lstlisting} 
+
+after saving the file from your external text editor program, you will see a listing of your file ?hellolaunch? right away. Okay, now copy it to your local drive and give it a try running it from there:
+
+\begin{lstlisting}[frame=single,language=XML]
+SWITCH TO 1.
+COPY HELLOLAUNCH FROM 0.
+RUN HELLOLAUNCH.
+\end{lstlisting} 
+
+\begin{center}
+\includegraphics[width=3in]{example_2_1.png}
+\end{center}
+
+Okay so the program doesn?t actually DO anything yet other than just countdown from 10 to 0. A bit of a disappointment, but we haven?t written the rest of the program yet.
+
+You?ll note that what you?ve done is switch to the local volume (1) and then copy the program from the archive (0) to the local volume (1) and then run it from the local volume. Technically you didn?t need to do this. You could have just run it directly from the archive. For those looking at the KSP game as a bit of a role-play experience, it makes sense to never run programs directly from the archive, and instead live with the limitation that software should be copied to the craft for it to be able to run it.
+
+\paragraph{Step 3: Make the script actually do something}
+Okay now go back into your text editor of choice and append a few more lines to the hellolaunch.ks file so it now looks like this:
+
+\begin{lstlisting}[frame=single,language=XML]
+// My First Launcher.
+
+PRINT "Counting down:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO {
+    PRINT "..." + countdown.
+    WAIT 1. // pauses the script here for 1 second.
+}
+
+PRINT "Main throttle up.  2 seconds to stabalize it.".
+LOCK THROTTLE TO 1.0.   // 1.0 is the max, 0.0 is idle.
+WAIT 2. // give throttle time to adjust.
+UNTIL SHIP:MAXTHRUST > 0 {
+    WAIT 0.5. // pause half a second between stage attempts.
+    PRINT "Stage activated.".
+    STAGE. // same as hitting the spacebar.
+}
+WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
+
+// NOTE that it is vital to not just let the script end right away
+// here.  Once a kOS script just ends, it releases all the controls
+// back to manual piloting so that you can fly the ship by hand again.
+// If the pogram just ended here, then that would cause the throttle
+// to turn back off again right away and nothing would happen.
+\end{lstlisting} 
+
+Save this file to hellolaunch.ks again, and re-copy it to your vessel that should still be sitting on the launchpad, then run it, like so:
+
+\begin{lstlisting}[frame=single,language=XML]
+COPY HELLOLAUNCH FROM 0.
+RUN HELLOLAUNCH.
+\end{lstlisting} 
+
+\begin{center}
+\includegraphics[width=3in]{example_2_2.png}
+\end{center}
+
+Hey! It does something now! It fires the first stage engine and launches!
+
+But.. but wait... It doesn?t control the steering and it just lets it go where ever it will.
+
+Most likely you had a crash with this script because it didn?t do anything to affect the steering at all, so it probably allowed the rocket to tilt over.
+
+\paragraph{Step 4: Make the script actually control steering}
+So to fix that problem, let?s add steering control to the script.
+
+The easy way to control steering is to use the LOCK STEERING command.
+
+Once you have mastered the basics of kOS, you should go and read the documentation on ship steering techniques, but that?s a more advanced topic for later.
+
+The way to use the LOCK STEERING command is to set it to a thing called a Vector or a Direction. There are several Directions built-in to kOS, one of which is called ?UP?. ?UP? is a Direction that always aims directly toward the sky (the center of the blue part of the navball).
+
+So to steer always UP, just do this:
+
+\begin{lstlisting}[frame=single,language=XML]
+LOCK STEERING TO UP.
+\end{lstlisting} 
+
+So if you just add this one line to your script, you?ll get something that should keep the craft aimed straight up and not let it tip over. Add the line just after the line that sets the THROTTLE, like so:
+
+\begin{lstlisting}[frame=single,language=XML]
+// My First Launcher.
+
+PRINT "Counting down:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO {
+    PRINT "..." + countdown.
+    WAIT 1. // pauses the script here for 1 second.
+}
+PRINT "Main throttle up.  2 seconds to stabalize it.".
+LOCK THROTTLE TO 1.0.   // 1.0 is the max, 0.0 is idle.
+
+
+LOCK STEERING TO UP.  // This is the new line to add
+
+
+WAIT 2. // give throttle time to adjust.
+UNTIL SHIP:MAXTHRUST > 0 {
+    WAIT 0.5. // pause half a second between stage attempts.
+    PRINT "Stage activated.".
+    STAGE. // same as hitting the spacebar.
+}
+WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
+
+// NOTE that it is vital to not just let the script end right away
+// here.  Once a kOS script just ends, it releases all the controls
+// back to manual piloting so that you can fly the ship by hand again.
+// If the pogram just ended here, then that would cause the throttle
+// to turn back off again right away and nothing would happen.
+\end{lstlisting} 
+
+Again, copy this and run it, like before. If your craft crashed in the previous step, which it probably did, then revert to the VAB and re-launch it. NOTE: Due to a bug sometimes reverting just to the launchpad does not work well and you need to revert all the way back to the VAB.:
+
+\begin{lstlisting}[frame=single,language=XML]
+SWITCH TO 1. // should be the default already, but just in case.
+COPY HELLOLAUNCH FROM 0.
+RUN HELLOLAUNCH.
+\end{lstlisting} 
+
+\begin{center}
+\includegraphics[width=3in]{example_2_3.png}
+\end{center}
+
+Now you should see the same thing as before, but now your craft will stay pointed up.
+
+But wait - it only does the first stage and then it stops without doing the next stage? how do I fix that?
+
+\paragraph{Step 5: Add staging logic}
+The logic for how and when to stage can be an interesting and fun thing to write yourself. This example will keep it very simple, and this is the part where it?s important that you are using a vessel that only contains liquidfuel engines. If your vessel has some booster engines, then it would require a more sophisticated script to launch it correctly than this tutorial gives you.
+
+To add the logic to check when to stage, we introduce a new concept called the WHEN trigger. To see full documentation on it when you finish the tutorial, look for it on the Flow Control page
+
+The quick and dirty explanation is that a WHEN section is a short section of code that you set up to run LATER rather than right now. It creates a check in the background that will constantly look for some condition to occur, and when it happens, it interrupts whatever else the code is doing, and it will run the body of the WHEN code before continuing from where it left off in the main script.
+
+There are some complex dangers with writing WHEN triggers that can cause KSP itself to hang or stutter if you are not careful, but explaining them is beyond the scope of this tutorial. But when you want to start using WHEN triggers yourself, you really should read the section on WHEN in the Flow Control page before you do so.
+
+The WHEN trigger we are going to add to the launch script looks like this:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN STAGE:LIQUIDFUEL < 0.001 THEN {
+    PRINT "No liquidfuel.  Attempting to stage.".
+    STAGE.
+    PRESERVE.
+}
+\end{lstlisting} 
+
+It says, ?Whenever the amount of liquid fuel in the current stage is so small it may as well be zero (< 0.001), then activate the next stage.? The PRESERVE keyword says, ?don?t stop checking this condition just because it?s been triggered once. It should still keep checking for it again in the future.? The check for < 0.001 is because sometimes KSP won?t quite burn the last drop of fuel in a stage. If this block of code is inserted into the script, then it will set up a constant background check that will always hit the next stage as soon as the current stage has no liquidfuel in it. UNLIKE with all the previous edits this tutorial has asked you to make to the script, this time you?re going to be asked to delete something and replace it. The new WHEN section above should actually REPLACE the existing ?UNTIL SHIP:MAXTHRUST > 0? loop that you had before.
+
+Now your script should look like this:
+
+\begin{lstlisting}[frame=single,language=XML]
+// My First Launcher.
+
+PRINT "Counting down:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO {
+    PRINT "..." + countdown.
+    WAIT 1. // pauses the script here for 1 second.
+}
+PRINT "Main throttle up.  2 seconds to stabalize it.".
+LOCK THROTTLE TO 1.0.   // 1.0 is the max, 0.0 is idle.
+LOCK STEERING TO UP.
+WAIT 2. // give throttle time to adjust.
+
+// The section below replaces previous UNTIL loop:
+
+WHEN STAGE:LIQUIDFUEL < 0.001 THEN {
+    PRINT "No liquidfuel.  Attempting to stage.".
+    STAGE.
+    PRESERVE.
+}
+WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
+
+// NOTE that it is vital to not just let the script end right away
+// here.  Once a kOS script just ends, it releases all the controls
+// back to manual piloting so that you can fly the ship by hand again.
+// If the pogram just ended here, then that would cause the throttle
+// to turn back off again right away and nothing would happen.
+\end{lstlisting} 
+Again, relaunch the ship, copy the script as before, and run it again. This time you should see it activate your later upper stages correctly. (again, assuming you made the entire vessel with only liquidfuel engines.)
+
+\begin{center}
+\includegraphics[width=3in]{example_2_4.png}
+\end{center}
+
+\paragraph{Step 6: Now to make it turn}
+Okay that?s fine but it still just goes straight up! What about a gravity turn?
+
+Well, a true and proper gravity turn is a very complex bit of math that is best left as an excercise for the reader, given that the goal of kOS is to let you write your OWN autopilot, not to write it for you. But to give some basic examples of commands, lets just make a crude gravity turn approximation that simply flies the ship like a lot of new KSP pilots learn to do it for the first time:
+
+Fly straight up to 10000m.
+Aim at 45 degrees down toward the east until 40000m.
+Thrust horizontally east after that.
+To make this work, we introduce a new way to make a Direction, called the HEADING function. Whenever you call the function HEADING(a,b), it makes a Direction oriented as follows on the navball:
+
+Point at the compass heading A.
+Pitch up a number of degrees from the horizon = to B.
+So for example, HEADING(45,10) would aim northeast, 10 degrees above the horizon. Combining this with the WHEN command from before, we get this section:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN SHIP:ALTITUDE > 10000 THEN {
+    PRINT "Starting turn.  Aiming to 45 degree pitch.".
+    LOCK STEERING TO HEADING(90,45). // east, 45 degrees pitch.
+}
+WHEN SHIP:ALTITUDE > 40000 THEN {
+    PRINT "Starting flat part.  Aiming to horizon.".
+    LOCK STEERING TO HEADING(90,0). // east, horizontal.
+}
+\end{lstlisting} 
+
+Note that these lack the command PRESERVE like the previous WHEN example had. This is because we want these to trigger just once and then never again. There?s no point in constantly telling kOS to reset the steering to the same thing over and over as the script runs.
+
+Now, if you insert this new section to the script, we have a nice nifty example of a start of a launching script. Note that it works even if you insert it at the top of the script, because it sets up the triggers to occur LATER when the condition becomes true. They don?t execute right away:
+
+\begin{lstlisting}[frame=single,language=XML]
+// My First Launcher.
+
+WHEN SHIP:ALTITUDE > 10000 THEN {
+    PRINT "Starting turn.  Aiming to 45 degree pitch.".
+    LOCK STEERING TO HEADING(90,45). // east, 45 degrees pitch.
+}
+WHEN SHIP:ALTITUDE > 40000 THEN {
+    PRINT "Starting flat part.  Aiming to horizon.".
+    LOCK STEERING TO HEADING(90,0). // east, horizontal.
+}
+PRINT "Counting down:".
+FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdown - 1.} DO {
+    PRINT "..." + countdown.
+    WAIT 1. // pauses the script here for 1 second.
+}
+PRINT "Main throttle up.  2 seconds to stabalize it.".
+LOCK THROTTLE TO 1.0.   // 1.0 is the max, 0.0 is idle.
+LOCK STEERING TO UP.
+WAIT 2. // give throttle time to adjust.
+
+// The section below replaces previous UNTIL loop:
+
+WHEN STAGE:LIQUIDFUEL < 0.001 THEN {
+    PRINT "No liquidfuel.  Attempting to stage.".
+    STAGE.
+    PRESERVE.
+}
+WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
+
+// NOTE that it is vital to not just let the script end right away
+// here.  Once a kOS script just ends, it releases all the controls
+// back to manual piloting so that you can fly the ship by hand again.
+// If the program just ended here, then that would cause the throttle
+// to turn back off again right away and nothing would happen.
+\end{lstlisting} 
+
+And here is it in action:
+
+\begin{center}
+\includegraphics[width=3in]{example_2_5.png}
+\end{center}
+
+And toward the end:
+
+\begin{center}
+\includegraphics[width=3in]{example_2_6.png}
+\end{center}
+
+If we assume you made a vessel that has enough fuel and power to get up to orbit, this script should in principle work to get you to the point of leaving the atmosphere. It will probably still fall back down, because this script makes no attempt to ensure that the craft is going fast enough to maintain the orbit.
+
+As you can probably see, it would still have a long way to go before it would become a really GOOD launching autopilot. Think about the following features you could add yourself as you become more familiar with kOS:
+
+You could change the steering logic to make a more smooth gravity turn by constantly adjusting the pitch in the HEADING according to some math formula. The example shown here tends to create a ?too high? launch that?s a bit inefficient.
+You could complete the launching script by making sure once the vessel breaks the atmosphere it actually makes a circular orbit rather than just stopping after 70000m and coasting.
+This script just stupidly leaves the throttle at max the whole way. You could make it more sophisticated by adjusting the throttle as necessary to avoid too much wasted energy fighting air friction. (The way KSP?s stock areodynamic model works, the optimal speed is terminal velocity, by the way). This is partly addressed in the PID Loop Tutorial.
+With more sophisticated staging checks, the script could be made to work with solid fuel engines as well.
+With even more sophisticated checks, the script could be made to work with fancy staging methods like asaparagus.
+Using the PRINT AT command, you can make fancier status readouts in the termainl window as the script runs.
+	\section{Design Patterns and Considerations with kOS} %%%%% SECTION %%%%%
+	
+There are many ways one can write a control program for a given scenario. The goal of this section is to help a novice kOS programmer, after having finished the Quick Start Tutorial, to develop a sense of elegance and capability when writing his or her own kOS scripts. All of the examples in this tutorial may be tested by the reader using a rocket design similar to the following. Notice it carries an accelerometer and the negative gravioli detector which are used in the second section. Don?t forget the kOS module as well!
+
+\begin{center}
+\includegraphics[width=3in]{designpatterns_rocket.png}
+\end{center}
+
+\subsection{The Major Design Patterns of kOS Control Programs}
+The design of a program is usually determined by the flow-control statements used. I.e., the WHEN/THEN, ON, WAIT, UNTIL, IF and FOR constructs. Here is a list of the major styles of control programs that can be written in kOS:
+
+Sequential
+Loops with Condition Checking
+Loops with Triggers
+Of course, one style does not fit all scenarios and the programmer will typically want to use a combination of these all at once. Also, there may be other design patterns not listed here which can be perfectly valid, but this is a start.
+
+\paragraph{1. Sequential Programs}
+These are programs that rely almost exclusively on WAIT UNTIL statements to go from one phase to the next.
+
+\begin{lstlisting}[frame=single,language=XML]
+LOCK STEERING TO HEADING(0,90).
+LOCK THROTTLE TO 1.
+STAGE.
+WAIT UNTIL SHIP:ALTITUDE > 10000.
+LOCK STEERING TO HEADING(0,90) + R(0,-45,0).
+WAIT UNTIL STAGE:LIQUIDFUEL < 0.1.
+STAGE.
+WAIT UNTIL SHIP:ALTITUDE > 20000.
+LOCK THROTTLE TO 0.
+WAIT UNTIL FALSE. // CTRL+C to break out
+\end{lstlisting} 
+
+This example will take a two stage rocket up to 20km. The immediate thing to notice is that the programmer must have known that the first stage would cutoff between 10km and 20km. This is fine for a specific rocket but not too general and could end in disaster if the first stage cutoff occurs at say 5km. Certainly, one can write a program using this technique to take a specific rocket, put it into orbit and even perform a lot of fancy maneuvers, but adapting the code to different rockets may get complicated quickly.
+
+\paragraph{2. Loops with Condition Checking}
+Here, we introduce IF/ELSE logic into UNTIL loops:
+
+\begin{lstlisting}[frame=single,language=XML]
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+LOCK THROTTLE TO 1.
+STAGE.
+UNTIL SHIP:ALTITUDE > 20000 {
+    IF SHIP:ALTITUDE > 10000 {
+        LOCK STEERING TO R(0,0,-90) + HEADING(90,45).
+    }
+    IF STAGE:LIQUIDFUEL < 0.1 {
+        STAGE.
+    }
+}
+LOCK THROTTLE TO 0.
+WAIT UNTIL FALSE.
+\end{lstlisting} 
+
+This does the same thing as the previous example, but now it?s checking for a staging condition from the launch pad all the way to 20km. More than that, it will stage as many times as needed.
+
+One can imagine that these types of UNTIL loops can become very complex with many layers of IF/ELSE blocks. Once this happens it is usually good to reduce the frequency of the loop by adding a WAIT statement at the end of the loop. This wait could be anywhere from 0.001 (every physics tick), to 60 (every minute) or even longer for inter-planetary transfers if desired.
+
+3. Loops with Triggers
+In the above example, once the rocket reaches 10km, the steering is constantly being re-locked to HEADING(90,45). This works, but it only needs to be locked once. A possible improvement is to set up a trigger using a WHEN/THEN statement:
+
+\begin{lstlisting}[frame=single,language=XML]
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+LOCK THROTTLE TO 1.
+STAGE.
+WHEN SHIP:ALTITUDE > 10000 THEN {
+    LOCK STEERING TO R(0,0,-90) + HEADING(90,45).
+}
+UNTIL SHIP:ALTITUDE > 20000 {
+    IF STAGE:LIQUIDFUEL < 0.1 {
+        STAGE.
+    }
+}
+LOCK THROTTLE TO 0.
+WAIT UNTIL FALSE.
+\end{lstlisting} 
+
+Now, when the rocket reaches 10km, the steering is set once and the trigger is removed from the active list of triggers. The staging condition can also be promoted to a trigger, keeping the trigger active after every stage using the PRESERVE keyword:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
+    STAGE.
+    PRESERVE.
+}
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+LOCK THROTTLE TO 1.
+STAGE.
+WHEN SHIP:ALTITUDE > 10000 THEN {
+    LOCK STEERING TO R(0,0,-90) + HEADING(90,45).
+}
+WAIT UNTIL SHIP:ALTITUDE > 20000.
+LOCK THROTTLE TO 0.
+WAIT UNTIL FALSE.
+\end{lstlisting} 
+
+Notice that the UNTIL loop was changed to a WAIT UNTIL statement since the program is small and all the logic of the triggers can be handled in a reasonable amount of time - there will be more on this topic later.
+
+\paragraph{Bringing It All Together}
+Typically, the programmer will find all of these constructs are useful at the same time and kOS scripts will naturally contain some sequential parts in combination with long-term and short-term triggers which can modify states in complex loops of varying frequency. If you didn?t follow that bit of gobbledygook, don?t worry. The next section will discuss a few recommendations for beginning kOS programmers to follow when setting up any program.
+
+
 	\section{PID Loops}
 	\section{Execute Node Script}
