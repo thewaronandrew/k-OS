@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 19:39
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 19:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1079,12 +1079,86 @@ Underfull \vbox (badness 7925) has occurred while \output is active []
  [35]
 File: images/pidtune5.png Graphic file (type QTm)
 
-<use  "images/pidtune5.png" > [36]) [37]
+<use  "images/pidtune5.png" > [36]
+Overfull \hbox (1.99977pt too wide) in paragraph at lines 989--991
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (140.00117pt too wide) in paragraph at lines 1010--1011
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (7.99983pt too wide) in paragraph at lines 1013--1014
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (68.00044pt too wide) in paragraph at lines 1014--1016
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (374.00356pt too wide) in paragraph at lines 1023--1024
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][] 
+ []
+
+[37]
+Overfull \hbox (74.0005pt too wide) in paragraph at lines 1032--1033
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (38.00014pt too wide) in paragraph at lines 1035--1036
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (374.00356pt too wide) in paragraph at lines 1039--1040
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (1.99977pt too wide) in paragraph at lines 1040--1041
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (230.00209pt too wide) in paragraph at lines 1043--1044
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (272.00252pt too wide) in paragraph at lines 1051--1052
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (146.00124pt too wide) in paragraph at lines 1052--1053
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (230.00209pt too wide) in paragraph at lines 1057--1058
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38])
+[39]
 \openout2 = `General.aux'.
 
 
 No file General.tex.
-[38
+[40
 
 
 
@@ -1095,23 +1169,23 @@ No file General.tex.
 No file Lanuage.tex.
 \openout2 = `Mathematics.aux'.
 
-(./Mathematics.tex [39
+(./Mathematics.tex [41
 
-
-
-
-]) [40]
-\openout2 = `Commands.aux'.
-
- (./Commands.tex [41
 
 
 
 ]) [42]
+\openout2 = `Commands.aux'.
+
+ (./Commands.tex [43
+
+
+
+]) [44]
 \openout2 = `Structures.aux'.
 
  (./Structures.tex
-[43
+[45
 
 
 
@@ -1119,17 +1193,17 @@ No file Lanuage.tex.
 Overfull \vbox (192.82135pt too high) has occurred while \output is active []
 
 
-[44]
+[46]
 \openout2 = `Addons.aux'.
 
- (./Addons.tex [45
+ (./Addons.tex [47
 
 
 
-]) [46]
+]) [48]
 \openout2 = `Changes.aux'.
 
- (./Changes.tex [47
+ (./Changes.tex [49
 
 
 
@@ -1138,12 +1212,12 @@ Overfull \vbox (192.82135pt too high) has occurred while \output is active []
 (./Mathematics.aux) (./Commands.aux) (./Structures.aux) (./Addons.aux)
 (./Changes.aux)) ) 
 Here is how much of TeX's memory you used:
- 28322 strings out of 493706
- 577826 string characters out of 6145769
- 656429 words of memory out of 5000000
- 31227 multiletter control sequences out of 15000+600000
+ 28323 strings out of 493706
+ 577844 string characters out of 6145769
+ 673429 words of memory out of 5000000
+ 31228 multiletter control sequences out of 15000+600000
  3800 words of font info for 34 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,6n,76p,10376b,1609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,6n,76p,10376b,1621s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Main.pdf (47 pages).
+Output written on Main.pdf (49 pages).
