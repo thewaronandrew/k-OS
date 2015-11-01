@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 19:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  31 OCT 2015 19:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -778,10 +778,7 @@ Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 ))
 \@float@every@program=\toks38
 \c@program=\count156
- (./Main.aux (./Introduction.aux) (./Tutorials.aux) (./General.aux) (./Lanuage.
-aux)
-(./Mathematics.aux) (./Commands.aux) (./Structures.aux) (./Addons.aux)
-(./Changes.aux))
+ (./Main.aux)
 \openout1 = `Main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -936,48 +933,48 @@ Overfull \hbox (59.75037pt too wide) in paragraph at lines 44--46
 
 [1
 
-] (./Main.toc [2
-
-])
+] (./Main.toc)
 \tf@toc=\write4
 \openout4 = `Main.toc'.
 
- [3]
+ [2
+
+]
 \openout2 = `Introduction.aux'.
 
- (./Introduction.tex [4
-
-
-]) [5]
-\openout2 = `Tutorials.aux'.
-
- (./Tutorials.tex [6
-
+ (./Introduction.tex [3
 
 
 ]
-File: images/SCS_parts_bin.png Graphic file (type QTm)
-
-<use  "images/SCS_parts_bin.png" > [7]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-)
+)) [4]
+\openout2 = `Tutorials.aux'.
+
+
+(./Tutorials.tex [5
+
+
+
+]
+File: images/SCS_parts_bin.png Graphic file (type QTm)
+ <use  "images/SCS_parts_bin.png" > [6]
 File: images/terminal_open_1.png Graphic file (type QTm)
 
 <use  "images/terminal_open_1.png" >
 File: images/terminal_open_2.png Graphic file (type QTm)
  <use  "images/terminal_open_2.png" >
-[8]
+[7]
 File: images/editor.png Graphic file (type QTm)
  <use  "images/editor.png" >
 File: images/hello_world1.png Graphic file (type QTm)
- <use  "images/hello_world1.png" > [9]
+ <use  "images/hello_world1.png" > [8]
 File: images/hello_list.png Graphic file (type QTm)
 
-<use  "images/hello_list.png" > [10] [11]
+<use  "images/hello_list.png" > [9] [10]
 Overfull \hbox (128.00105pt too wide) in paragraph at lines 156--157
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
 
@@ -987,13 +984,13 @@ File: images/example_2_1.png Graphic file (type QTm)
 <use  "images/example_2_1.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12]
+ [11]
 Overfull \hbox (128.00105pt too wide) in paragraph at lines 196--197
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
 
  []
 
-[13]
+[12]
 File: images/example_2_2.png Graphic file (type QTm)
  <use  "images/example_2_2.png" >
 Overfull \hbox (128.00105pt too wide) in paragraph at lines 256--257
@@ -1001,13 +998,13 @@ Overfull \hbox (128.00105pt too wide) in paragraph at lines 256--257
 
  []
 
-[14]
+[13]
 File: images/example_2_3.png Graphic file (type QTm)
  <use  "images/example_2_3.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-[16]
+ [14]
+[15]
 Overfull \hbox (128.00105pt too wide) in paragraph at lines 325--326
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
 
@@ -1017,8 +1014,8 @@ File: images/example_2_4.png Graphic file (type QTm)
 <use  "images/example_2_4.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
-[18]
+ [16]
+[17]
 Overfull \hbox (128.00105pt too wide) in paragraph at lines 396--397
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
 
@@ -1028,22 +1025,22 @@ File: images/example_2_5.png Graphic file (type QTm)
 <use  "images/example_2_5.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19]
+ [18]
 File: images/example_2_6.png Graphic file (type QTm)
 
-<use  "images/example_2_6.png" > [20]
+<use  "images/example_2_6.png" > [19]
 File: images/designpatterns_rocket.png Graphic file (type QTm)
 
-<use  "images/designpatterns_rocket.png" > [21] [22] [23] [24] [25])
+<use  "images/designpatterns_rocket.png" > [20] [21] [22] [23] [24])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26]
-[27]
+ [25]
+[26]
 \openout2 = `General.aux'.
 
 
 No file General.tex.
-[28
+[27
 
 
 
@@ -1054,23 +1051,23 @@ No file General.tex.
 No file Lanuage.tex.
 \openout2 = `Mathematics.aux'.
 
-(./Mathematics.tex [29
+(./Mathematics.tex [28
 
 
 
 
-]) [30]
+]) [29]
 \openout2 = `Commands.aux'.
 
- (./Commands.tex [31
+ (./Commands.tex [30
 
 
 
-]) [32]
+]) [31]
 \openout2 = `Structures.aux'.
 
  (./Structures.tex
-[33
+[32
 
 
 
@@ -1078,17 +1075,17 @@ No file Lanuage.tex.
 Overfull \vbox (192.82135pt too high) has occurred while \output is active []
 
 
-[34]
+[33]
 \openout2 = `Addons.aux'.
 
- (./Addons.tex [35
+ (./Addons.tex [34
 
 
 
-]) [36]
+]) [35]
 \openout2 = `Changes.aux'.
 
- (./Changes.tex [37
+ (./Changes.tex [36
 
 
 
@@ -1097,12 +1094,12 @@ Overfull \vbox (192.82135pt too high) has occurred while \output is active []
 (./Mathematics.aux) (./Commands.aux) (./Structures.aux) (./Addons.aux)
 (./Changes.aux)) ) 
 Here is how much of TeX's memory you used:
- 28307 strings out of 493706
- 577628 string characters out of 6145769
- 656843 words of memory out of 5000000
- 31218 multiletter control sequences out of 15000+600000
+ 28275 strings out of 493706
+ 577187 string characters out of 6145769
+ 653478 words of memory out of 5000000
+ 31204 multiletter control sequences out of 15000+600000
  3800 words of font info for 34 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,6n,76p,10376b,1583s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,6n,76p,10376b,1585s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Main.pdf (37 pages).
+Output written on Main.pdf (36 pages).
