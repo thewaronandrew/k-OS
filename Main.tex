@@ -1,23 +1,27 @@
 \documentclass[letterpaper, twoside, 10pt]{report}
 
+%%%%% PACKAGE LOAD %%%%%
+\usepackage[some]{background}
+\usepackage{amsmath}
+\usepackage{fancyref}
+\usepackage{framed}
+\usepackage{float}
 \usepackage{fontspec}
-\usepackage{listings}
 \usepackage{graphicx}
 \usepackage[
 		letterpaper,
 		marginparwidth={8em}
 		]{geometry}
+\usepackage{lipsum}
+\usepackage{listings}
 \usepackage{microtype}
 \usepackage{titlesec}
-\usepackage{fancyref}
-\usepackage{framed}
-\usepackage{float}
-\usepackage[dvipsnames,prologue]{xcolor}
-\usepackage[some]{background}
+\usepackage{xcolor}
 
 %%%%% FORMATTING %%%%%
-
 \graphicspath{ {images/} }
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\DeclareFixedFont{\bigsf}{T1}{phv}{b}{n}{1.5cm}
 
 %%%%% FLOATS %%%%%
 \newfloat{program}{tbphH}{lop}[section]
@@ -27,25 +31,57 @@
 \title{k-OS System Manual}
 \author{Headquarters, Kerbal Space Center}
 \date{\today}
+
+\backgroundsetup{
+scale=1,
+angle=0,
+opacity=1,
+contents={\begin{tikzpicture}[remember picture,overlay]
+ \path [fill=titlepagecolor] (-0.5\paperwidth,5) rectangle (0.5\paperwidth,10);  
+\end{tikzpicture}}
+}
+\makeatletter                       
+\def\printauthor{%                  
+    {\large \@author}}              
+\makeatother
+\author{%
+    KM 03-62
+    KERBAL SYSTEMS MANUAL \\
+    \vspace{40pt} \\
+    HEADQUARTERS,\\
+    KERBAL SPACE CENTER\\
+    }
  
 %%%%% DOCUMENT %%%%%
 \begin{document}
 
 %%%%% TITLE PAGE %%%%%
 \begin{titlepage}
+\BgThispage
+\newgeometry{left=1cm,right=4cm}
 \begin{center}
 		\fboxsep10pt
-		\colorbox{gray}{\begin{minipage}{6.5in}
+		\colorbox{gray}{\begin{minipage}{7in}
 		\begin{flushright}
 		\texttt{\LARGE{\textbf{ KM\,03-62}}}\\
 		\texttt{\large KERBAL SYSTEMS FIELD MANUAL}
-		\vfill
 		\end{flushright}
 		\end{minipage}}
-		\texttt{\Huge KERBAL OPERATING SYSTEM}
-		\vfill
 	\end{center}
+\noindent
+\textcolor{white}{\bigsf KERBAL OPERATING\\
+				\vspace{8pt} \\
+				 SYSTEM}
+\vspace*{2.5cm}\par
+\noindent
+\vspace{300pt} \\
+\begin{center}
+\texttt{\LARGE{\textbf{ HEADQUARTERS, KERBAL SPACE CENTER}}}
+\end{center}
 \end{titlepage}
+\restoregeometry
+\lipsum[1-2]
+
 
 %%%%% LIST OF EFFECTIVE PAGES %%%%%
 
@@ -64,4 +100,34 @@
 \include{Changes}
 
 %%%%% DOCUMENT END %%%%%
+\end{document}
+
+%%%%% CLIPBOARD ZONE %%%%%
+\begin{titlepage}
+\BgThispage
+\newgeometry{left=1cm,right=4cm}
+\vspace*{2cm}
+\noindent
+\textcolor{white}{\bigsf Hardy's Theorem}
+\vspace*{2.5cm}\par
+\noindent
+\begin{minipage}{0.35\linewidth}
+    \begin{flushright}
+        \printauthor
+    \end{flushright}
+\end{minipage} \hspace{15pt}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{175pt}
+\end{minipage} \hspace{-10pt}
+%
+\begin{minipage}{0.6\linewidth}
+\vspace{5pt}
+    \begin{abstract} 
+An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose. When used, an abstract always appears at the beginning of a manuscript, acting as the point-of-entry for any given scientific paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.
+    \end{abstract}
+\end{minipage}
+\end{titlepage}
+\restoregeometry
+\lipsum[1-2]
 \end{document}
