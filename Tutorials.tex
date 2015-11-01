@@ -539,6 +539,137 @@ Notice that the UNTIL loop was changed to a WAIT UNTIL statement since the progr
 \paragraph{Bringing It All Together}
 Typically, the programmer will find all of these constructs are useful at the same time and kOS scripts will naturally contain some sequential parts in combination with long-term and short-term triggers which can modify states in complex loops of varying frequency. If you didn?t follow that bit of gobbledygook, don?t worry. The next section will discuss a few recommendations for beginning kOS programmers to follow when setting up any program.
 
+\subsection{General Guidelines for kOS Scripts}
+This section discusses two general guidelines to follow when starting out with more complicated kOS scripts. These are not meant to be absolute and there will certainly be cases when they can be stretched, though one should never totally ignore them.
+
+\paragraph{1. Minimize Time Spent in WHEN/THEN Blocks}
+Remember that WAIT statements are ignored when inside WHEN/THEN blocks. It is OK to loop over small lists (engines for example), but don?t let it get out of hand. The WHEN/THEN construct was designed to accommodate quick bits of code. Consider this bit of (non-working) code which tries to adjust the throttle based on the g-force as measured by a combination of the accelerometer and the negative gravioli detector:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET thrott TO 1.
+LOCK THROTTLE TO thrott.
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+STAGE.
+WHEN SHIP:ALTITUDE > 1000 THEN {
+    SET g TO KERBIN:MU / KERBIN:RADIUS^2.
+    LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
+    LOCK gforce TO accvec:MAG / g.
+    LOCK dthrott TO 0.05 * (1.2 - gforce).
+
+    UNTIL SHIP:ALTITUDE > 40000 {
+        WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
+            STAGE.
+            PRESERVE.
+        }
+        SET thrott to thrott + dthrott.
+        WAIT 0.1.
+    }
+}
+\end{lstlisting} 
+
+This looks reasonable. The throttle is set to maximum until 1km is reached at which point the throttle is adjusted every 0.1 seconds. If the gforce is off from the value of 1.2, then the throttle is either increased or decreased by a small amount. Running this on a test rocket merely produce the message ?Program ended.?
+
+Understanding why this does not work is important. Everything in a WHEN/THEN block is expected to complete in the current physics tick, but here we have a loop that is supposed to last until the ship reaches 40km. This example can be reworked by separating the triggers from the loop. The staging trigger was separated from the UNTIL loop as well - not strictly necessary, but recommended form:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
+    STAGE.
+    PRESERVE.
+}
+SET thrott TO 1.
+SET dthrott TO 0.
+LOCK THROTTLE TO thrott.
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+STAGE.
+WHEN SHIP:ALTITUDE > 1000 THEN {
+    SET g TO KERBIN:MU / KERBIN:RADIUS^2.
+    LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
+    LOCK gforce TO accvec:MAG / g.
+    LOCK dthrott TO 0.05 * (1.2 - gforce).
+}
+UNTIL SHIP:ALTITUDE > 40000 {
+    SET thrott to thrott + dthrott.
+    WAIT 0.1.
+}
+\end{lstlisting} 
+
+Now this program should work. The variable dthrott had to be set to 0 in the beginning so that the throttle is kept at maximum until 1km, the UNTIL loop operates every 0.1 seconds, and the WHEN/THEN triggers are run only once when the condition is met. The take-away from this example is to keep WHEN/THEN blocks separate from UNTIL loops. Specifically, never put an UNTIL loop inside a WHEN/THEN block and it should be extremely rare to put a WHEN/THEN statement inside an UNTIL loop.
+
+Finally, as a bit of foreshadowing, this bit of code is actually a ?proportional feedback loop.? From an altitude of 1km up to 40km, the total g-force exerted on the ship is kept near 1.2 by constantly adjusting the throttle. The value of 1.2 is called the ?setpoint,? the measured g-force is called the ?process variable,? and the mystical 0.05 is called the ?proportional gain.? Please take a look at the PID Loop Tutorial which takes this script as a starting point and develops a full PID-loop in kOS.
+
+\paragraph{2. Minimize Trigger Conditions}
+There is a lot of power in developing multi-level LOCK variables in combination with WHEN/THEN triggers. However, it can be easy to hit kOS?s hard limit in the number of operations allowed for trigger checking. This will happen when several WHEN/THEN triggers are dependent on the same complex LOCK variable. This results in the LOCK variable being calculated multiple times every update. If the LOCK is deep enough, the calculations become too expensive to do and kOS stops executing and complains.
+
+With this in mind, consider an extension of the example script in the previous section. This time, the g-force setpoint changes as the rocket climbs through 10km, 20km and 30km:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
+    STAGE.
+    PRESERVE.
+}
+SET thrott TO 1.
+SET dthrott TO 0.
+LOCK THROTTLE TO thrott.
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+STAGE.
+WHEN SHIP:ALTITUDE > 1000 THEN {
+    SET g TO KERBIN:MU / KERBIN:RADIUS^2.
+    LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
+    LOCK gforce TO accvec:MAG / g.
+    LOCK dthrott TO 0.05 * (1.2 - gforce).
+}
+WHEN SHIP:ALTITUDE > 10000 THEN {
+    LOCK dthrott TO 0.05 * (2.0 - gforce).
+}
+WHEN SHIP:ALTITUDE > 20000 THEN {
+    LOCK dthrott TO 0.05 * (4.0 - gforce).
+}
+WHEN SHIP:ALTITUDE > 30000 THEN {
+    LOCK dthrott TO 0.05 * (5.0 - gforce).
+}
+UNTIL SHIP:ALTITUDE > 40000 {
+    SET thrott to thrott + dthrott.
+    WAIT 0.1.
+}
+\end{lstlisting} 
+
+This example does what is expected of it without problems. But the ship?s altitude is being checked at least five times for every update, including the UNTIL loop check. Certaintly, the kOS CPU can keep up with this, however, one can imagine a whole series of WHEN/THEN statements which make use of complicated calculations based on atmospheric data or orbital mechanics. One way to minimize the trigger condition checking is to take strictly-sequential triggers and nest them:
+
+\begin{lstlisting}[frame=single,language=XML]
+WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
+    STAGE.
+    PRESERVE.
+}
+SET thrott TO 1.
+SET dthrott TO 0.
+LOCK THROTTLE TO thrott.
+LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
+STAGE.
+WHEN SHIP:ALTITUDE > 1000 THEN {
+    SET g TO KERBIN:MU / KERBIN:RADIUS^2.
+    LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
+    LOCK gforce TO accvec:MAG / g.
+    LOCK dthrott TO 0.05 * (1.2 - gforce).
+
+    WHEN SHIP:ALTITUDE > 10000 THEN {
+        LOCK dthrott TO 0.05 * (2.0 - gforce).
+
+        WHEN SHIP:ALTITUDE > 20000 THEN {
+            LOCK dthrott TO 0.05 * (4.0 - gforce).
+
+            WHEN SHIP:ALTITUDE > 30000 THEN {
+                LOCK dthrott TO 0.05 * (5.0 - gforce).
+            }
+        }
+    }
+}
+UNTIL SHIP:ALTITUDE > 40000 {
+    SET thrott to thrott + dthrott.
+    WAIT 0.1.
+}
+\end{lstlisting} 
+
+Now this is quite elegant! The number of triggers have been reduced to two per update for the entire running of this script. The trigger at 1km sets up the next trigger which will happen at 10km which sets up then next at 20km and so on. This can save a lot of processing time for triggers that will happen sequentially. As a general rule, one should try to nest WHEN/THEN statements whenever possible. Again, both examples above will work, but when scripts start to have deep and complicated triggers, this nested construct can save it from the dreaded kOS trigger limit.
 
 	\section{PID Loops}
 	\section{Execute Node Script}
