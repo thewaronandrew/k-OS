@@ -1,6 +1,340 @@
 \part{Language}
 	\section{General Features}
-	\section{Language Syntax}
+		\subsection{Case Insensitivity}
+Everything in KerboScript is case-insensitive, including your own variable names and filenames. The only exception is when you perform a string comparison, ("Hello"="HELLO" will return false.)
+
+Most of the examples here will show the syntax in all-uppercase to help make it stand out from the explanatory text.
+
+\subsection{Expressions}
+KerboScript uses an expression evaluation system that allows you to perform math operations on variables. Some variables are defined by you. Others are defined by the system. There are four basic types:
+
+\paragraph{1. Numbers}
+You can use mathematical operations on numbers, like this:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET X TO 4 + 2.5.
+PRINT X.             // Outputs 6.5
+The system follows the order of operations, but currently the implementation is imperfect. For example, multiplication will always be performed before division, regardless of the order they come in. This will be fixed in a future release.
+\end{lstlisting}
+
+\paragraph{2. Strings}
+Strings are pieces of text that are generally meant to be printed to the screen. For example:
+
+\begin{lstlisting}[frame=single,language=XML]
+PRINT "Hello World!".
+\end{lstlisting}
+
+To concatenate strings, you can use the + operator. This works with mixtures of numbers and strings as well:
+
+\begin{lstlisting}[frame=single,language=XML]
+PRINT "4 plus 3 is: " + (4+3).
+\end{lstlisting}
+
+\paragraph{3. Structures}
+Structures are variables that contain more than one piece of information. For example, a Vector has an X, a Y, and a Z component. Structures can be used with SET.. TO just like any other variable. To access the sub-elements of a structure, you use the colon operator (?:?). Here are some examples:
+
+\begin{lstlisting}[frame=single,language=XML]
+PRINT "The Mun's periapsis altitude is: " + MUN:PERIAPSIS.
+PRINT "The ship's surface velocity is: " + SHIP:VELOCITY:SURFACE.
+\end{lstlisting}
+
+Many structures also let you set a specific component of them, for example:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET VEC TO V(10,10,10).  // A vector with x,y,z components
+                         // all set to 10.
+SET VEC:X to VEC:X * 4.  // multiply just the X part of VEC by 4.
+PRINT VEC.               // Results in V(40,10,10).
+\end{lstlisting}
+
+\paragraph{4. Structure Methods}
+Structures also often contain methods. A method is a suffix of a structure that actually performs an activity when you mention it, and can sometimes take parameters. The following are examples of calling methods of a structure:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET PLIST TO SHIP:PARTSDUBBED("my engines"). // calling a suffix
+                                             // method with one
+                                             // argument that
+                                             // returns a list.
+PLIST:REMOVE(0). // calling a suffix method with one argument that
+                 // doesn't return anything.
+PRINT PLIST:SUBLIST(0,4). // calling a suffix method with 2
+                          // arguments that returns a list.
+\end{lstlisting}
+
+Note
+
+New in version 0.15: Methods now perform the activity when the interpreter comes up to it. Prior to this version, execution was sometimes delayed until some later time depending on the trigger setup or flow-control.
+For more information, see the Structures Section. A full list of structure types can be found on the Structures page. For a more detailed breakdown of the language, see the Language Syntax Constructs page.
+
+\subsection{Short-circuiting booleans}
+Further reading: $https://en.wikipedia.org/wiki/Short-circuit_evaluation
+$
+When performing any boolean operation involving the use of the AND or the OR operator, kerboscript will short-circuit the boolean check. What this means is that if it gets to a point in the expression where it already knows the result is a forgone conclusion, it doesn?t bother calculating the rest of the expression and just quits there.
+
+Example:
+
+\begin{lstlisting}[frame=single,language=XML]
+set x to true.
+if x or y+2 > 10 {
+    print "yes".
+} else {
+    print "no".
+}.
+\end{lstlisting}
+
+In this case, the fact that x is true means that when evaluating the boolean expression x or y+2 > 10 it never even bothers trying to add y and 2 to find out if it?s greater than 10. It already knew as soon as it got to the x or whatever that given that x is true, the whatever doesn?t matter one bit. Once one side of an OR is true, the other side can either be true or false and it won?t change the fact that the whole expression will be true anyway.
+
+A similar short circuiting happens with AND. Once the left side of the AND operator is false, then the entire AND expression is guaranteed to be false regardless of what?s on the right side, so kerboscript doesn?t bother calculating the righthand side once the lefthand side is false.
+
+Read the link above for implications of why this matters in programming.
+
+\subsection{Late Typing}
+Kerboscript is a language in which there is only one type of variable and it just generically holds any sort of object of any kind. If you attempt to assign, for example, a string into a variable that is currently holding an integer, this does not generate an error. It simply causes the variable to change its type and no longer be an integer, becoming a string now.
+
+In other words, the type of a variable changes dynamically at runtime depending on what you assign into it.
+
+\subsection{Lazy Globals (variable declarations optional)}
+Kerboscript is a language in which variables need not be declared ahead of time. If you simply set a variable to a value, that just ?magically? makes the variable exist if it didn?t already. When you do this, the variable will necessarily be global in scope. kerboscript refers to these variables created implicitly this way as ?lazy globals?. It?s a system designed to make kerboscript easy to use for people new to programming.
+
+But if you are an experienced programmer you might not like this behavior, and there are good arguments for why you might want to disable it. If you wish to do so, a syntax exists to do so called :ref:NOLAZYGLOBAL.
+
+\subsection{User Functions}
+Note
+
+New in version 0.17: This feature did not exist in prior versions of kerboscript.
+Kerboscript supports user functions which you can write yourself and call from your own scripts. These are not structure methods (which as of this writing are a feature which only works for the built-in kOS types, and are not yet supported by the kerboscript language for user functions you write yourself).
+
+Example:
+
+\begin{lstlisting}[frame=single,language=XML]
+DECLARE FUNCTION DEGREES_TO_RADIANS {
+  DECLARE PARAMETER DEG.
+
+  RETURN CONSTANT():PI * DEG/180.
+}.
+
+SET ALPHA TO 45.
+PRINT ALPHA + " degrees is " + DEGREES_TO_RADIANS(ALPHA) + " radians.".
+\end{lstlisting}
+
+For a more detailed description of how to declare your own user functions, see the Language Syntax Constructs, User Functions section.
+
+\subsection{Structures}
+Structures, introduced above, are variable types that contain more than one piece of information. All structures contain sub-values or methods that can be accessed with a colon (:) operator. Multiple structures can be chained together with more than one colon (:) operator:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET myCraft TO SHIP.
+SET myMass TO myCraft:MASS.
+SET myVel TO myCraft:VELOCITY:ORBIT.
+\end{lstlisting}
+
+These terms are referred to as ?suffixes?. For example Velocity is a suffix of Vessel. It is possible to set some suffixes as well. The second line in the following example sets the ETA of a NODE 500 seconds into the future:
+
+\begin{lstlisting}[frame=single,language=XML]
+SET n TO Node( TIME:SECONDS + 60, 0, 10, 10).
+SET n:ETA to 500.
+\end{lstlisting}
+
+The full list of available suffixes for each type can be found here.
+	\section{Language Syntax}%%%%% SECTION %%%%%
+	This describes what is and is not a syntax error in the KerboScript programming language. It does not describe what function calls exist or which commands and built-in variables are present. Those are contained in other documents.
+	\subsection{General Rules}
+Whitespace consisting of consecutive spaces, tabs, and line breaks are all considered identical to each other. Because of this, indentation is up to you. You may indent however you like.
+
+Note
+
+Statements are ended with a period character (?.?).
+The following are reserved command keywords and special operator symbols:
+
+\paragraph{Arithmetic Operators:}
+
+\begin{lstlisting}[frame=single,language=XML]
++  -  *  /  ^  e  (  )
+\end{lstlisting}
+
+\paragraph{Logic Operators:}
+
+\begin{lstlisting}[frame=single,language=XML]
+not  and  or  true  false  <>  >=  <=  =  >  <
+\end{lstlisting}
+
+\paragraph{Instructions and keywords:}
+
+\begin{lstlisting}[frame=single,language=XML]
+set  to  if  else from until step do lock  unlock  print  at  on  toggle
+wait  when  then  off  stage  clearscreen  add  remove  log
+break  preserve  declare  parameter  switch  copy  rename
+volume  file  delete  edit  run  compile  list  reboot  shutdown
+for  unset  batch  deploy  in  all
+\end{lstlisting}
+
+\paragraph{Other symbols:}
+
+\begin{lstlisting}[frame=single,language=XML]
+{  }  [  ]  ,  :  //
+\end{lstlisting}
+
+Comments consist of everything from a ?//? symbol to the end of the line:
+
+\begin{lstlisting}[frame=single,language=XML]
+set x to 1. // this is a comment.
+\end{lstlisting}
+
+\paragraph{Identifiers:} Identifiers consist of: a string of (letter, digit, or underscore). The first character must be a letter. The rest may be letters, digits or underscores. Identifiers are case-insensitive. The following are identical identifiers:
+
+\begin{lstlisting}[frame=single,language=XML]
+My_Variable  my_varible  MY_VARAIBLE
+\end{lstlisting}
+
+\paragraph{case-insensitivity}
+The same case-insensitivity applies throughout the entire language, with all keywords except when comparing literal strings. The values inside the strings are still case-sensitive, for example, the following will print ?unequal?:
+
+\begin{lstlisting}[frame=single,language=XML]
+if "hello" = "HELLO" {
+    print "equal".
+} else {
+    print "unequal".
+}
+\end{lstlisting}
+
+\paragraph{Suffixes}
+Some variable types are structures that contain sub-portions. The separator between the main variable and the item inside it is a colon character (:). When this symbol is used, the part on the right-hand side of the colon is called the ?suffix?:
+
+\begin{lstlisting}[frame=single,language=XML]
+list parts in mylist.
+print mylist:length. // length is a suffix of mylist
+\end{lstlisting}
+
+Suffixes can be chained together, as in this example:
+
+\begin{lstlisting}[frame=single,language=XML]
+print ship:velocity:orbit:x.
+\end{lstlisting}
+
+In the above example you?d say ?velocity is a suffix of ship?, and ?orbit is a suffix of ship:velocity?, and ?x is a suffix of ship:velocity:orbit?.
+
+\subsection{Braces (statement blocks)}
+Anywhere you feel like, you may insert braces around a list of statements to get the language to treat them all as a single statement block.
+
+For example: the IF statement expects one statement as its body, like so:
+
+\begin{lstlisting}[frame=single,language=XML]
+if x = 1
+  print "it's 1".
+\end{lstlisting}
+
+But you can put multiple statements there as its body by surrounding them with braces, like so:
+
+\begin{lstlisting}[frame=single,language=XML]
+if x = 1 { print "it's 1".  print "yippieee.".  }
+\end{lstlisting}
+
+(Although this is usually preferred to be indented as follows):
+
+\begin{lstlisting}[frame=single,language=XML]
+if x = 1 {
+  print "it's 1".
+  print "yippieee.".
+}
+\end{lstlisting}
+
+or:
+
+\begin{lstlisting}[frame=single,language=XML]
+if x = 1
+{
+  print "it's 1".
+  print "yippieee.".
+}
+\end{lstlisting}
+
+Kerboscript does not require proper indentation of the brace sections, but it is a good idea to make things clear.
+
+You are allowed to just insert braces anywhere you feel like even when the language does not require it, as shown below:
+
+\begin{lstlisting}[frame=single,language=XML]
+declare x to 3.
+print "x here is " + x.
+{
+  declare x to 5.
+  print "x here is " + x.
+  {
+    declare x to 7.
+    print "x here is " + x.
+  }
+}
+\end{lstlisting}
+
+The usual reason for doing this is to create a local scope section for yourself. In the above example, there are actually 3 different variables called ?x? - each with a different scope.
+
+\subsection{Functions (built-in)}
+There exist a number of built-in functions you can call using their names. When you do so, you can do it like so:
+
+\begin{lstlisting}[frame=single,language=XML]
+functionName( *arguments with commas between them* ).
+\end{lstlisting}
+
+For example, the ROUND function takes 2 arguments:
+
+\begin{lstlisting}[frame=single,language=XML]
+print ROUND(1230.12312, 2).
+\end{lstlisting}
+
+The SIN function takes 1 argument:
+
+\begin{lstlisting}[frame=single,language=XML]
+print SIN(45).
+\end{lstlisting}
+
+When a function requires zero arguments, it is legal to call it using the parentheses or not using them. You can pick either way:
+
+\begin{lstlisting}[frame=single,language=XML]
+// These both work:
+CLEARSCREEN.
+CLEARSCREEN().
+\end{lstlisting}
+
+\subsection{Suffixes as Functions (Methods)}
+Some suffixes are actually functions you can call. When that is the case, these suffixes are called ?method suffixes?. Here are some examples:
+
+\begin{lstlisting}[frame=single,language=XML]
+set x to ship:partsnamed("rtg").
+print x:length().
+x:remove(0).
+x:clear().
+\end{lstlisting}
+
+\subsection{User Functions}
+Note
+
+New in version 0.17: This feature did not exist in prior versions of kerboscript.
+\paragraph{Help for the new user - What is a Function?}
+In programming terminology, there is a commonly used feature of many programming languages that works as follows:
+
+Create a chunk of program instructions that you don?t intend to execute YET.
+Later, when executing other parts of the program, do the following:
+2.A. Remember the current location in the program.
+2.B. Jump to the previously created chunk of code from (1) above.
+2.C. Run the instructions there.
+2.D. Return to where you remembered from (2.A) and continue from there.
+This feature goes by many different names, with slightly different precise meanings: Subroutines, Procedures, Functions, etc. For the purposes of kerboscript, we will refer to all uses of this feature with the term Function, whether it technically fits the mathematical definition of a ?function? or not.
+
+In kerboscript, you can make your own user functions using the DECLARE FUNCTION command, which is structured as follows:
+
+\begin{lstlisting}[frame=single,language=XML]
+declare function identifier { statements } optional dot (.)
+\end{lstlisting}
+
+Functions are a long enough topic as to require a separate documentation page, here.
+
+\subsection{Built-In Special Variable Names}
+Some variable names have special meaning and will not work as identifiers. Understanding this list is crucial to using kOS effectively, as these special variables are the usual way to query flight state information. The full list of reserved variable names is on its own page.
+
+\subsection{What does not exist (yet?)}
+Concepts that many other languages have, that are missing from KerboScript, are listed below. Many of these are things that could be supported some day, but at the moment with the limited amount of developer time available they haven?t become essential enough to spend the time on supporting them.
+
+\paragraph{user-made structures or classes}
+Several of the built-in variables of kOS are essentially ?classes? with methods and fields, however there?s currently no way for user code to create its own classes or structures. Supporting this would open up a large can of worms, as it would then make the kOS system more complex.
 	\section{Flow Control}
 	\section{Variables}
 	\section{User Functions}
