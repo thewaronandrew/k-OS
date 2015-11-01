@@ -121,7 +121,13 @@
 \contentsline {section}{\numberline {0.28}Core}{51}
 \contentsline {part}{VII\hspace {1em}Addons}{52}
 \contentsline {section}{\numberline {0.29}Addon Groups Extended}{53}
-\contentsline {section}{\numberline {0.30}RemoteTech}{53}
-\contentsline {section}{\numberline {0.31}Kerbal Alarm Clock}{53}
-\contentsline {section}{\numberline {0.32}Infernal Robotics}{53}
-\contentsline {part}{VIII\hspace {1em}Changes}{54}
+\contentsline {subsection}{\numberline {0.29.1}Basic Quick Start:}{53}
+\contentsline {subsection}{\numberline {0.29.2}Known limitations (Action groups 11 through 250 only):}{54}
+\contentsline {subsection}{\numberline {0.29.3}Action state monitoring}{55}
+\contentsline {subsection}{\numberline {0.29.4}Example code:}{55}
+\contentsline {subsection}{\numberline {0.29.5}Animation Delay:}{56}
+\contentsline {section}{\numberline {0.30}RemoteTech}{56}
+\contentsline {subsection}{\numberline {0.30.1}Interaction with kOS}{56}
+\contentsline {section}{\numberline {0.31}Kerbal Alarm Clock}{57}
+\contentsline {section}{\numberline {0.32}Infernal Robotics}{60}
+\contentsline {part}{VIII\hspace {1em}Changes}{64}
