@@ -80,14 +80,19 @@ contents={\begin{tikzpicture}[remember picture,overlay]
 \end{center}
 \end{titlepage}
 \restoregeometry
-\lipsum[1-2]
+\thispagestyle{empty}
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
 
 
 %%%%% LIST OF EFFECTIVE PAGES %%%%%
 
 %%%%% TABLE OF CONTENTS %%%%%
 \tableofcontents
-
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 %%%%% CONTENT INCLUSION %%%%%
 \include{Introduction}
 \include{Tutorials}
@@ -103,31 +108,3 @@ contents={\begin{tikzpicture}[remember picture,overlay]
 \end{document}
 
 %%%%% CLIPBOARD ZONE %%%%%
-\begin{titlepage}
-\BgThispage
-\newgeometry{left=1cm,right=4cm}
-\vspace*{2cm}
-\noindent
-\textcolor{white}{\bigsf Hardy's Theorem}
-\vspace*{2.5cm}\par
-\noindent
-\begin{minipage}{0.35\linewidth}
-    \begin{flushright}
-        \printauthor
-    \end{flushright}
-\end{minipage} \hspace{15pt}
-%
-\begin{minipage}{0.02\linewidth}
-    \rule{1pt}{175pt}
-\end{minipage} \hspace{-10pt}
-%
-\begin{minipage}{0.6\linewidth}
-\vspace{5pt}
-    \begin{abstract} 
-An abstract is a brief summary of a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, and is often used to help the reader quickly ascertain the paper's purpose. When used, an abstract always appears at the beginning of a manuscript, acting as the point-of-entry for any given scientific paper or patent application. Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject.
-    \end{abstract}
-\end{minipage}
-\end{titlepage}
-\restoregeometry
-\lipsum[1-2]
-\end{document}

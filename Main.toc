@@ -1,94 +1,94 @@
-\contentsline {part}{I\hspace {1em}Introduction}{6}
-\contentsline {part}{II\hspace {1em}Tutorials}{8}
-\contentsline {section}{\numberline {0.1}Quick Start}{9}
-\contentsline {subsection}{\numberline {0.1.1}First example: Hello World}{9}
-\contentsline {paragraph}{Step 1: Start a new sandbox-mode game}{9}
-\contentsline {paragraph}{Step 2: Make a vessel in the Vehicle Assembly Bay}{9}
-\contentsline {paragraph}{Step 3: Put the vessel on the launchpad}{9}
-\contentsline {paragraph}{Step 4: Invoke the terminal}{10}
-\contentsline {paragraph}{Step 5: See what an interactive command is like}{10}
-\contentsline {paragraph}{Step 6: Okay that?s great, but how can you make that happen in a program script instead?}{11}
-\contentsline {paragraph}{Step 7: Okay, but where is this program?}{12}
-\contentsline {paragraph}{Step 8: I don?t like the idea that the program is stored only on this vessel. Can?t I save it somewhere better? }{12}
-\contentsline {subsection}{\numberline {0.1.2}Second Example: Doing something real}{13}
-\contentsline {paragraph}{Step 1: Make a vessel}{13}
-\contentsline {paragraph}{Step 3: Make the script actually do something}{15}
-\contentsline {paragraph}{Step 4: Make the script actually control steering}{16}
-\contentsline {paragraph}{Step 5: Add staging logic}{18}
-\contentsline {paragraph}{Step 6: Now to make it turn}{20}
-\contentsline {section}{\numberline {0.2}Design Patterns and Considerations with kOS}{23}
-\contentsline {subsection}{\numberline {0.2.1}The Major Design Patterns of kOS Control Programs}{23}
-\contentsline {paragraph}{1. Sequential Programs}{23}
-\contentsline {paragraph}{2. Loops with Condition Checking}{24}
-\contentsline {paragraph}{Bringing It All Together}{25}
-\contentsline {subsection}{\numberline {0.2.2}General Guidelines for kOS Scripts}{25}
-\contentsline {paragraph}{1. Minimize Time Spent in WHEN/THEN Blocks}{25}
-\contentsline {paragraph}{2. Minimize Trigger Conditions}{27}
-\contentsline {section}{\numberline {0.3}PID Loops in k-OS}{29}
-\contentsline {paragraph}{Proportional Feedback Loop (P-loop)}{29}
-\contentsline {paragraph}{Proportional-Integral Feedback Loop (PI-loop)}{31}
-\contentsline {paragraph}{Proportional-Integral-Derivative Feedback Loop (PID-loop)}{32}
-\contentsline {paragraph}{Final Touches}{33}
-\contentsline {paragraph}{Tuning a PID-loop}{34}
-\contentsline {section}{\numberline {0.4}Execute Node Script}{38}
-\contentsline {part}{III\hspace {1em}Mathematics}{42}
-\contentsline {section}{\numberline {0.5}Fundamental Constants}{43}
-\contentsline {section}{\numberline {0.6}Mathematical Functions}{43}
-\contentsline {section}{\numberline {0.7}Vectors}{43}
-\contentsline {section}{\numberline {0.8}Directions}{43}
-\contentsline {section}{\numberline {0.9}Geographic Coordinates}{43}
-\contentsline {section}{\numberline {0.10}Reference Frames}{43}
-\contentsline {part}{IV\hspace {1em}Commands}{44}
-\contentsline {section}{\numberline {0.11}Flight Control}{45}
-\contentsline {subsection}{\numberline {0.11.1}Cooked Control}{45}
-\contentsline {subsection}{\numberline {0.11.2}Raw Control}{45}
-\contentsline {subsection}{\numberline {0.11.3}Pilot Input}{45}
-\contentsline {subsection}{\numberline {0.11.4}Ship Systems}{45}
-\contentsline {subsection}{\numberline {0.11.5}Time Warping}{45}
-\contentsline {section}{\numberline {0.12}Prediction}{45}
-\contentsline {section}{\numberline {0.13}Listing Data}{45}
-\contentsline {section}{\numberline {0.14}Parts Information}{45}
-\contentsline {section}{\numberline {0.15}File I/O}{45}
-\contentsline {section}{\numberline {0.16}Termianl and GUI}{45}
-\contentsline {section}{\numberline {0.17}Resource Transfer}{45}
-\contentsline {part}{V\hspace {1em}Structures}{46}
-\contentsline {section}{\numberline {0.18}Orbits}{47}
-\contentsline {subsection}{\numberline {0.18.1}Orbit}{47}
-\contentsline {subsection}{\numberline {0.18.2}Orbitable (Vessels and Bodies)}{47}
-\contentsline {subsection}{\numberline {0.18.3}Orbitable Velocity}{47}
-\contentsline {section}{\numberline {0.19}Celestial Bodies}{47}
-\contentsline {subsection}{\numberline {0.19.1}Atmosphere}{47}
-\contentsline {subsection}{\numberline {0.19.2}Body}{47}
-\contentsline {section}{\numberline {0.20}Vessels and Parts}{47}
-\contentsline {subsection}{\numberline {0.20.1}Agregate Resource}{47}
-\contentsline {subsection}{\numberline {0.20.2}Docking Port}{47}
-\contentsline {subsection}{\numberline {0.20.3}Element}{47}
-\contentsline {subsection}{\numberline {0.20.4}Engine}{47}
-\contentsline {subsection}{\numberline {0.20.5}Gimbal}{47}
-\contentsline {subsection}{\numberline {0.20.6}Maneuver Node}{47}
-\contentsline {subsection}{\numberline {0.20.7}Part}{47}
-\contentsline {subsection}{\numberline {0.20.8}Part Module}{47}
-\contentsline {subsection}{\numberline {0.20.9}Resource}{47}
-\contentsline {subsection}{\numberline {0.20.10}Sensor}{47}
-\contentsline {subsection}{\numberline {0.20.11}Stage}{47}
-\contentsline {subsection}{\numberline {0.20.12}Vessel}{47}
-\contentsline {subsection}{\numberline {0.20.13}Vessel Sensors}{47}
-\contentsline {section}{\numberline {0.21}Waypoints}{47}
-\contentsline {section}{\numberline {0.22}Miscellaneous}{47}
-\contentsline {subsection}{\numberline {0.22.1}Colors}{47}
-\contentsline {subsection}{\numberline {0.22.2}Configuration of kOS}{47}
-\contentsline {subsection}{\numberline {0.22.3}File Information}{47}
-\contentsline {subsection}{\numberline {0.22.4}Part Highlighting}{47}
-\contentsline {subsection}{\numberline {0.22.5}Iterator}{47}
-\contentsline {subsection}{\numberline {0.22.6}List}{47}
-\contentsline {subsection}{\numberline {0.22.7}Resource Transfer}{47}
-\contentsline {subsection}{\numberline {0.22.8}Terminal}{47}
-\contentsline {subsection}{\numberline {0.22.9}Time Span}{47}
-\contentsline {subsection}{\numberline {0.22.10}Drawing Vectors on the Screen}{47}
-\contentsline {section}{\numberline {0.23}Core}{47}
-\contentsline {part}{VI\hspace {1em}Addons}{48}
-\contentsline {section}{\numberline {0.24}Addon Groups Extended}{49}
-\contentsline {section}{\numberline {0.25}RemoteTech}{49}
-\contentsline {section}{\numberline {0.26}Kerbal Alarm Clock}{49}
-\contentsline {section}{\numberline {0.27}Infernal Robotics}{49}
-\contentsline {part}{VII\hspace {1em}Changes}{50}
+\contentsline {part}{I\hspace {1em}Introduction}{1}
+\contentsline {part}{II\hspace {1em}Tutorials}{3}
+\contentsline {section}{\numberline {0.1}Quick Start}{4}
+\contentsline {subsection}{\numberline {0.1.1}First example: Hello World}{4}
+\contentsline {paragraph}{Step 1: Start a new sandbox-mode game}{4}
+\contentsline {paragraph}{Step 2: Make a vessel in the Vehicle Assembly Bay}{4}
+\contentsline {paragraph}{Step 3: Put the vessel on the launchpad}{4}
+\contentsline {paragraph}{Step 4: Invoke the terminal}{5}
+\contentsline {paragraph}{Step 5: See what an interactive command is like}{5}
+\contentsline {paragraph}{Step 6: Okay that?s great, but how can you make that happen in a program script instead?}{6}
+\contentsline {paragraph}{Step 7: Okay, but where is this program?}{7}
+\contentsline {paragraph}{Step 8: I don?t like the idea that the program is stored only on this vessel. Can?t I save it somewhere better? }{7}
+\contentsline {subsection}{\numberline {0.1.2}Second Example: Doing something real}{8}
+\contentsline {paragraph}{Step 1: Make a vessel}{8}
+\contentsline {paragraph}{Step 3: Make the script actually do something}{10}
+\contentsline {paragraph}{Step 4: Make the script actually control steering}{11}
+\contentsline {paragraph}{Step 5: Add staging logic}{13}
+\contentsline {paragraph}{Step 6: Now to make it turn}{15}
+\contentsline {section}{\numberline {0.2}Design Patterns and Considerations with kOS}{18}
+\contentsline {subsection}{\numberline {0.2.1}The Major Design Patterns of kOS Control Programs}{18}
+\contentsline {paragraph}{1. Sequential Programs}{18}
+\contentsline {paragraph}{2. Loops with Condition Checking}{19}
+\contentsline {paragraph}{Bringing It All Together}{20}
+\contentsline {subsection}{\numberline {0.2.2}General Guidelines for kOS Scripts}{20}
+\contentsline {paragraph}{1. Minimize Time Spent in WHEN/THEN Blocks}{20}
+\contentsline {paragraph}{2. Minimize Trigger Conditions}{22}
+\contentsline {section}{\numberline {0.3}PID Loops in k-OS}{24}
+\contentsline {paragraph}{Proportional Feedback Loop (P-loop)}{24}
+\contentsline {paragraph}{Proportional-Integral Feedback Loop (PI-loop)}{26}
+\contentsline {paragraph}{Proportional-Integral-Derivative Feedback Loop (PID-loop)}{27}
+\contentsline {paragraph}{Final Touches}{28}
+\contentsline {paragraph}{Tuning a PID-loop}{29}
+\contentsline {section}{\numberline {0.4}Execute Node Script}{33}
+\contentsline {part}{III\hspace {1em}Mathematics}{37}
+\contentsline {section}{\numberline {0.5}Fundamental Constants}{38}
+\contentsline {section}{\numberline {0.6}Mathematical Functions}{38}
+\contentsline {section}{\numberline {0.7}Vectors}{38}
+\contentsline {section}{\numberline {0.8}Directions}{38}
+\contentsline {section}{\numberline {0.9}Geographic Coordinates}{38}
+\contentsline {section}{\numberline {0.10}Reference Frames}{38}
+\contentsline {part}{IV\hspace {1em}Commands}{39}
+\contentsline {section}{\numberline {0.11}Flight Control}{40}
+\contentsline {subsection}{\numberline {0.11.1}Cooked Control}{40}
+\contentsline {subsection}{\numberline {0.11.2}Raw Control}{40}
+\contentsline {subsection}{\numberline {0.11.3}Pilot Input}{40}
+\contentsline {subsection}{\numberline {0.11.4}Ship Systems}{40}
+\contentsline {subsection}{\numberline {0.11.5}Time Warping}{40}
+\contentsline {section}{\numberline {0.12}Prediction}{40}
+\contentsline {section}{\numberline {0.13}Listing Data}{40}
+\contentsline {section}{\numberline {0.14}Parts Information}{40}
+\contentsline {section}{\numberline {0.15}File I/O}{40}
+\contentsline {section}{\numberline {0.16}Termianl and GUI}{40}
+\contentsline {section}{\numberline {0.17}Resource Transfer}{40}
+\contentsline {part}{V\hspace {1em}Structures}{41}
+\contentsline {section}{\numberline {0.18}Orbits}{42}
+\contentsline {subsection}{\numberline {0.18.1}Orbit}{42}
+\contentsline {subsection}{\numberline {0.18.2}Orbitable (Vessels and Bodies)}{42}
+\contentsline {subsection}{\numberline {0.18.3}Orbitable Velocity}{42}
+\contentsline {section}{\numberline {0.19}Celestial Bodies}{42}
+\contentsline {subsection}{\numberline {0.19.1}Atmosphere}{42}
+\contentsline {subsection}{\numberline {0.19.2}Body}{42}
+\contentsline {section}{\numberline {0.20}Vessels and Parts}{42}
+\contentsline {subsection}{\numberline {0.20.1}Agregate Resource}{42}
+\contentsline {subsection}{\numberline {0.20.2}Docking Port}{42}
+\contentsline {subsection}{\numberline {0.20.3}Element}{42}
+\contentsline {subsection}{\numberline {0.20.4}Engine}{42}
+\contentsline {subsection}{\numberline {0.20.5}Gimbal}{42}
+\contentsline {subsection}{\numberline {0.20.6}Maneuver Node}{42}
+\contentsline {subsection}{\numberline {0.20.7}Part}{42}
+\contentsline {subsection}{\numberline {0.20.8}Part Module}{42}
+\contentsline {subsection}{\numberline {0.20.9}Resource}{42}
+\contentsline {subsection}{\numberline {0.20.10}Sensor}{42}
+\contentsline {subsection}{\numberline {0.20.11}Stage}{42}
+\contentsline {subsection}{\numberline {0.20.12}Vessel}{42}
+\contentsline {subsection}{\numberline {0.20.13}Vessel Sensors}{42}
+\contentsline {section}{\numberline {0.21}Waypoints}{42}
+\contentsline {section}{\numberline {0.22}Miscellaneous}{42}
+\contentsline {subsection}{\numberline {0.22.1}Colors}{42}
+\contentsline {subsection}{\numberline {0.22.2}Configuration of kOS}{42}
+\contentsline {subsection}{\numberline {0.22.3}File Information}{42}
+\contentsline {subsection}{\numberline {0.22.4}Part Highlighting}{42}
+\contentsline {subsection}{\numberline {0.22.5}Iterator}{42}
+\contentsline {subsection}{\numberline {0.22.6}List}{42}
+\contentsline {subsection}{\numberline {0.22.7}Resource Transfer}{42}
+\contentsline {subsection}{\numberline {0.22.8}Terminal}{42}
+\contentsline {subsection}{\numberline {0.22.9}Time Span}{42}
+\contentsline {subsection}{\numberline {0.22.10}Drawing Vectors on the Screen}{42}
+\contentsline {section}{\numberline {0.23}Core}{42}
+\contentsline {part}{VI\hspace {1em}Addons}{43}
+\contentsline {section}{\numberline {0.24}Addon Groups Extended}{44}
+\contentsline {section}{\numberline {0.25}RemoteTech}{44}
+\contentsline {section}{\numberline {0.26}Kerbal Alarm Clock}{44}
+\contentsline {section}{\numberline {0.27}Infernal Robotics}{44}
+\contentsline {part}{VII\hspace {1em}Changes}{45}
