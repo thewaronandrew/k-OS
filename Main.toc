@@ -25,7 +25,7 @@
 \contentsline {paragraph}{1. Minimize Time Spent in WHEN/THEN Blocks}{20}
 \contentsline {paragraph}{2. Minimize Trigger Conditions}{22}
 \contentsline {section}{\numberline {0.3}PID Loops in k-OS}{24}
-\contentsline {paragraph}{Proportional Feedback Loop (P-loop)}{24}
+\contentsline {paragraph}{Proportional Feedback Loop (P-loop)}{25}
 \contentsline {paragraph}{Proportional-Integral Feedback Loop (PI-loop)}{26}
 \contentsline {paragraph}{Proportional-Integral-Derivative Feedback Loop (PID-loop)}{27}
 \contentsline {paragraph}{Final Touches}{28}
@@ -49,17 +49,17 @@
 \contentsline {paragraph}{Arithmetic Operators:}{41}
 \contentsline {paragraph}{Logic Operators:}{41}
 \contentsline {paragraph}{Instructions and keywords:}{41}
-\contentsline {paragraph}{Other symbols:}{41}
+\contentsline {paragraph}{Other symbols:}{42}
 \contentsline {paragraph}{Identifiers:}{42}
 \contentsline {paragraph}{case-insensitivity}{42}
 \contentsline {paragraph}{Suffixes}{42}
 \contentsline {subsection}{\numberline {0.6.2}Braces (statement blocks)}{42}
-\contentsline {subsection}{\numberline {0.6.3}Functions (built-in)}{43}
+\contentsline {subsection}{\numberline {0.6.3}Functions (built-in)}{44}
 \contentsline {subsection}{\numberline {0.6.4}Suffixes as Functions (Methods)}{44}
 \contentsline {subsection}{\numberline {0.6.5}User Functions}{44}
 \contentsline {paragraph}{Help for the new user - What is a Function?}{44}
-\contentsline {subsection}{\numberline {0.6.6}Built-In Special Variable Names}{44}
-\contentsline {subsection}{\numberline {0.6.7}What does not exist (yet?)}{44}
+\contentsline {subsection}{\numberline {0.6.6}Built-In Special Variable Names}{45}
+\contentsline {subsection}{\numberline {0.6.7}What does not exist (yet?)}{45}
 \contentsline {paragraph}{user-made structures or classes}{45}
 \contentsline {section}{\numberline {0.7}Flow Control}{45}
 \contentsline {section}{\numberline {0.8}Variables}{45}
@@ -121,7 +121,7 @@
 \contentsline {section}{\numberline {0.28}Core}{51}
 \contentsline {part}{VII\hspace {1em}Addons}{52}
 \contentsline {section}{\numberline {0.29}Addon Groups Extended}{53}
-\contentsline {subsection}{\numberline {0.29.1}Basic Quick Start:}{53}
+\contentsline {subsection}{\numberline {0.29.1}Basic Quick Start:}{54}
 \contentsline {subsection}{\numberline {0.29.2}Known limitations (Action groups 11 through 250 only):}{54}
 \contentsline {subsection}{\numberline {0.29.3}Action state monitoring}{55}
 \contentsline {subsection}{\numberline {0.29.4}Example code:}{55}

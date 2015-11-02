@@ -2,27 +2,27 @@
 	This section is for ways in which kOS has special case exceptions to its normal generic behaviours, in order to accommodate other KSP mods. If you don?t use any of KSP mods mentioned, you don?t need to read this section.
 	To help KOS scripts identify whether or not certain mod is installed and available following suffixed functions were introduced in version 0.17
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 ADDONS:AGX:AVAILABLE
-\end{lstlisting}
+\end{Verbatim}
 
 Returns True if mod Action Group Extended is installed and available to KOS.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 ADDONS:RT:AVAILABLE
-\end{lstlisting}
+\end{Verbatim}
 
 Returns True if mod RemoteTech is installed and available to KOS. See more RemoteTech functions here.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 ADDONS:KAC:AVAILABLE
-\end{lstlisting}
+\end{Verbatim}
 
 Returns True if mod Kerbal Alarm Clock is installed and available to KOS.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 ADDONS:IR:AVAILABLE
-\end{lstlisting}
+\end{Verbatim}
 
 Returns True if mod Infernal Robotics is installed, available to KOS and applicable to current craft. See more here.
 	\section{Addon Groups Extended}%%%%% SECTION %%%%%
@@ -75,7 +75,7 @@ It is okay to activate an already activated group and deactivate a non-activated
 
 Print to the terminal any time you activate action group 15. Use this to change variables within a running kOS script and the ?Script Trigger? action found on the kOS computer part:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 AG15 on. // Activate action group 15.
 print AG15. // Print action group 15's state to the terminal. (True/False)
 
@@ -83,7 +83,7 @@ on AG15 { //Prints "Action group 15 clicked!" to the console when AG15 is toggle
   print "Action group 15 clicked!".
   preserve.
 }
-\end{lstlisting}
+\end{Verbatim}
 
 \subsection{Animation Delay:}
 
@@ -92,7 +92,7 @@ On it?s next update pass (100ms to 250ms later), AGX checks AG15?s state and see
 A few seconds later, the solar panel finishes it?s deployment animation. On it?s next update pass AGX checks AG15?s state and sees the solar panel is now deployed which means that AG15?s state is now true and so sets it that way. AG15 False -> True and prints to the terminal a third time.
 As a workaround, you need to add a cooldown:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 declare cooldownTimeAG15 to 0.
 on AG15 {
   if cooldownTimeAG15 + 10 < time:seconds {
@@ -101,7 +101,7 @@ on AG15 {
   }
   preserve.
 }
-\end{lstlisting}
+\end{Verbatim}
 
 Note the 10 in the second line, that is your cooldown time in seconds. Set this to a number of seconds that is longer then your animation time and the above code will limit whatever is inside the IF statement so it can only activate after 10 seconds have passed since the previous activation and will not try to activate a second time while the solar panel animation is still playing.
 	\section{RemoteTech}%%%%% SECTION %%%%%
@@ -113,7 +113,7 @@ If you launch a manned craft while using RemoteTech, you are still able to input
 
 It is possible to activate/deactivate RT antennas, as well as set their targets using kOS:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SET p TO SHIP:PARTSNAMED("mediumDishAntenna")[0].
 SET m to p:GETMODULE("ModuleRTAntenna").
 m:DOEVENT("activate").
@@ -121,7 +121,7 @@ m:SETFIELD("target", "mission-control").
 // or
 m:SETFIELD("target", mun).
 m:SETFIELD("target", "minmus").
-\end{lstlisting}
+\end{Verbatim}
 
 Acceptable values for ?target? are: ?no-target?, ?active-vessel?, ?mission-control?, a Body, a Vessel, or a string containing the name of a body or vessel.
 
@@ -199,23 +199,23 @@ Type:	bool
 Access:	Get only
 True if KAC is installed and KAC integration enabled. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 if ADDONS:KAC:AVAILABLE
 {
     //some KAC dependent code
 }
-\end{lstlisting}
+\end{Verbatim}
 
 KACAddon:ALARMS()
 Returns:	List of KACAlarm objects
 List all the alarms set up in Kerbal Alarm Clock. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 for i in ADDONS:KAC:ALARMS
 {
         print i:NAME + " - " + i:REMAINING + " - " + i:TYPE+ " - " + i:ACTION.
 }
-\end{lstlisting}
+\end{Verbatim}
 
 structure KACAlarm
 Suffix	Type	Description
@@ -313,34 +313,34 @@ DELETEALARM(alarmID)	Delete alarm with ID = alarmID
 ADDALARM(AlarmType, UT, Name, Notes)
 Creates alarm of type KACAlarm:ALARMTYPE at UT with Name and Notes attributes set. Attaches alarm to current CPU Vessel. Returns KACAlarm object if creation was successful and empty string otherwise:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 set na to addAlarm("Raw",time:seconds+300, "Test", "Notes").
 print na:NAME. //prints 'Test'
 set na:NOTES to "New Description".
 print na:NOTES. //prints 'New Description'
-\end{lstlisting}
+\end{Verbatim}
 
 LISTALARMS(alarmType)
 If alarmType equals ?All?, returns List of all KACAlarm objects attached to current vessel or have no vessel attached. Otherwise returns List of all KACAlarm objects with KACAlarm:TYPE equeal to alarmType and attached to current vessel or have no vessel attached.:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 set al to listAlarms("All").
 for i in al
 {
     print i:ID + " - " + i:name.
 }
-\end{lstlisting}
+\end{Verbatim}
 
 DELETEALARM(alarmID)
 Deletes alarm with ID equal to alarmID. Returns True if successful, false otherwise:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 set na to addAlarm("Raw",time:seconds+300, "Test", "Notes").
 if (DELETEALARM(na:ID))
 {
     print "Alarm Deleted".
 }
-\end{lstlisting}
+\end{Verbatim}
 	\section{Infernal Robotics}%%%%% SECTION %%%%%
 	Infernal Robotics introduces robotics parts to the game, letting you create moving or spinning contraptions that just aren?t possible under stock KSP.
 	
@@ -362,36 +362,36 @@ Type:	bool
 Access:	Get only
 Returns True if mod Infernal Robotics is installed, available to KOS and applicable to current craft. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 if ADDONS:IR:AVAILABLE
 {
     //some IR dependent code
 }
-\end{lstlisting}
+\end{Verbatim}
 
 IRAddon:GROUPS
 Type:	List of IRControlGroup objects
 Access:	Get only
 Lists all Servo Groups for current focused vessel. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 for g in ADDONS:IR:GROUPS
 {
     Print g:NAME + " contains " + g:SERVOS:LENGTH + " servos".
 }
-\end{lstlisting}
+\end{Verbatim}
 
 IRAddon:ALLSERVOS
 Type:	List of IRServo objects
 Access:	Get only
 Lists all Servos for current focused vessel. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 for s in ADDONS:IR:ALLSERVOS
 {
     print "Name: " + s:NAME + ", position: " + s:POSITION.
 }
-\end{lstlisting}
+\end{Verbatim}
 
 structure IRControlGroup
 Suffix	Type	Description
@@ -437,7 +437,7 @@ Type:	List of IRServo objects
 Access:	Get only
 Lists Servos in the Group. Example of use:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 for g in ADDONS:IR:GROUPS
 {
     Print g:NAME + " contains " + g:SERVOS:LENGTH + " servos:".
@@ -446,7 +446,7 @@ for g in ADDONS:IR:GROUPS
         print "    " + s:NAME + ", position: " + s:POSITION.
     }
 }
-\end{lstlisting}
+\end{Verbatim}
 
 IRControlGroup:MOVERIGHT()
 Returns:	void
@@ -612,7 +612,7 @@ Commands servo to move to position with speedMult multiplier.
 
 Example code:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 print "IR Iavailable: " + ADDONS:IR:AVAILABLE.
 
 Print "Groups:".
@@ -633,4 +633,4 @@ for g in ADDONS:IR:GROUPS
         }
     }
 }
-\end{lstlisting}
+\end{Verbatim}

@@ -25,9 +25,9 @@ Note that if the terminal is semi-transparent, this means it?s not currently sel
 \paragraph{Step 5: See what an interactive command is like}
 You should now see an old-school looking text terminal like the one shown below. Type the line:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 CLEARSCREEN. PRINT "==HELLO WORLD==".
-\end{lstlisting} 
+\end{Verbatim} 
 
 into the terminal (make sure to actually type the periods (?.?) as shown) and hit ENTER. Note that you can type it in uppercase or lowercase. kOS doesn?t care.
 
@@ -44,9 +44,9 @@ The terminal will respond by showing you this:
 \paragraph{Step 6: Okay that?s great, but how can you make that happen in a program script instead?}
 Like so: Enter this command:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 EDIT HELLO.
-\end{lstlisting} 
+\end{Verbatim} 
 
 (Don?t forget the period (?.?). All commands in kOS are ended with a period. Again, you can type it in uppercase or lowercase. kOS doesn?t care.)
 
@@ -58,21 +58,21 @@ You should see an editor window appear, looking something like this (without the
 
 Type this text into the window:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 PRINT "=========================================".
 PRINT "      HELLO WORLD".
 PRINT "THIS IS THE FIRST SCRIPT I WROTE IN kOS.".
 PRINT "=========================================".
-\end{lstlisting} 
+\end{Verbatim} 
 
 Click ?Save? then ?Exit? in the editor popup window.
 
 Side Note: The editor font - Experienced programmers may have noticed that the editor?s font is proportional width rather than monospaced and that this is not ideal for programming work. You are right, but there is little that can be done about it for a variety of technical reasons that are too complex to go into right now.
 Then on the main text terminal Enter:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 RUN HELLO.
-\end{lstlisting} 
+\end{Verbatim} 
 
 And you will see the program run, showing the text on the screen like so.
 
@@ -83,9 +83,9 @@ And you will see the program run, showing the text on the screen like so.
 \paragraph{Step 7: Okay, but where is this program?}
 To see where the ?HELLO? program has been saved, Issue the command LIST FILES like this:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 LIST FILES.
-\end{lstlisting} 
+\end{Verbatim} 
 
 (Note, that the default for the LIST command is to list FILES, so you can leave the word ?FILES? off if you like.)
 
@@ -110,7 +110,7 @@ To use the Archive, first we?ll have to introduce you to a new command, called S
 
 To work with the archive, and create a second ?hello world? file there, you issue these commands and see what they do:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SWITCH TO 0.
 EDIT HELLO2. // Make a new file here that just says: PRINT "hi again".
 LIST FILES.
@@ -118,7 +118,7 @@ RUN HELLO2.
 SWITCH TO 1.
 LIST FILES.
 RUN HELLO.
-\end{lstlisting} 
+\end{Verbatim} 
 
 But where is it stored behind the scenes? The archive is currently slightly violating the design of KSP mods that puts everything in the GameData folder. The kSP Archive is actually stored in the Ships/Script folder of your MAIN KSP home, not inside GameData.
 
@@ -149,7 +149,7 @@ the kOS SCS part somewhere in the stack, near the top bit where it won?t fall of
 Step 2: Make the start of the script
 Okay, so type the lines below in an external text editor of your choice (i.e. Notepad on Windows, or TextEdit on Mac, or whatever you fancy):
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // My First Launcher.
 
 PRINT "Counting down:".
@@ -157,7 +157,7 @@ FROM {local countdown is 10.} UNTIL countdown = 0 STEP {SET countdown to countdo
     PRINT "..." + countdown.
     WAIT 1. // pauses the script here for 1 second.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 See those things with the two slashes (?//?)? Those are comments in the kerboscript language and they?re just ways to write things in the program that don?t do anything - they?re there for humans like you to read so you understand what?s going on. In these examples you never actually have to type in the things you see after the slashes. They?re there for your benefit when reading this document but you can leave them out if you wish.
 
@@ -165,18 +165,18 @@ Save the file in your Ships/Script folder of your KSP installation under the fil
 
 By saving the file in Ships/Script, you have actually put it in your archive volume of kOS. kOS will see it there immediately without delay. You do not need to restart the game. If you do:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SWITCH TO 0.
 LIST FILES.
-\end{lstlisting} 
+\end{Verbatim} 
 
 after saving the file from your external text editor program, you will see a listing of your file ?hellolaunch? right away. Okay, now copy it to your local drive and give it a try running it from there:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SWITCH TO 1.
 COPY HELLOLAUNCH FROM 0.
 RUN HELLOLAUNCH.
-\end{lstlisting} 
+\end{Verbatim} 
 
 \begin{center}
 \includegraphics[width=3in]{example_2_1.png}
@@ -189,7 +189,7 @@ You?ll note that what you?ve done is switch to the local volume (1) and then cop
 \paragraph{Step 3: Make the script actually do something}
 Okay now go back into your text editor of choice and append a few more lines to the hellolaunch.ks file so it now looks like this:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // My First Launcher.
 
 PRINT "Counting down:".
@@ -213,14 +213,14 @@ WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
 // back to manual piloting so that you can fly the ship by hand again.
 // If the pogram just ended here, then that would cause the throttle
 // to turn back off again right away and nothing would happen.
-\end{lstlisting} 
+\end{Verbatim} 
 
 Save this file to hellolaunch.ks again, and re-copy it to your vessel that should still be sitting on the launchpad, then run it, like so:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 COPY HELLOLAUNCH FROM 0.
 RUN HELLOLAUNCH.
-\end{lstlisting} 
+\end{Verbatim} 
 
 \begin{center}
 \includegraphics[width=3in]{example_2_2.png}
@@ -243,13 +243,13 @@ The way to use the LOCK STEERING command is to set it to a thing called a Vector
 
 So to steer always UP, just do this:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 LOCK STEERING TO UP.
-\end{lstlisting} 
+\end{Verbatim} 
 
 So if you just add this one line to your script, you?ll get something that should keep the craft aimed straight up and not let it tip over. Add the line just after the line that sets the THROTTLE, like so:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // My First Launcher.
 
 PRINT "Counting down:".
@@ -277,15 +277,15 @@ WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
 // back to manual piloting so that you can fly the ship by hand again.
 // If the pogram just ended here, then that would cause the throttle
 // to turn back off again right away and nothing would happen.
-\end{lstlisting} 
+\end{Verbatim} 
 
 Again, copy this and run it, like before. If your craft crashed in the previous step, which it probably did, then revert to the VAB and re-launch it. NOTE: Due to a bug sometimes reverting just to the launchpad does not work well and you need to revert all the way back to the VAB.:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SWITCH TO 1. // should be the default already, but just in case.
 COPY HELLOLAUNCH FROM 0.
 RUN HELLOLAUNCH.
-\end{lstlisting} 
+\end{Verbatim} 
 
 \begin{center}
 \includegraphics[width=3in]{example_2_3.png}
@@ -306,19 +306,19 @@ There are some complex dangers with writing WHEN triggers that can cause KSP its
 
 The WHEN trigger we are going to add to the launch script looks like this:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN STAGE:LIQUIDFUEL < 0.001 THEN {
     PRINT "No liquidfuel.  Attempting to stage.".
     STAGE.
     PRESERVE.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 It says, ?Whenever the amount of liquid fuel in the current stage is so small it may as well be zero (< 0.001), then activate the next stage.? The PRESERVE keyword says, ?don?t stop checking this condition just because it?s been triggered once. It should still keep checking for it again in the future.? The check for < 0.001 is because sometimes KSP won?t quite burn the last drop of fuel in a stage. If this block of code is inserted into the script, then it will set up a constant background check that will always hit the next stage as soon as the current stage has no liquidfuel in it. UNLIKE with all the previous edits this tutorial has asked you to make to the script, this time you?re going to be asked to delete something and replace it. The new WHEN section above should actually REPLACE the existing ?UNTIL SHIP:MAXTHRUST > 0? loop that you had before.
 
 Now your script should look like this:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // My First Launcher.
 
 PRINT "Counting down:".
@@ -345,7 +345,7 @@ WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
 // back to manual piloting so that you can fly the ship by hand again.
 // If the pogram just ended here, then that would cause the throttle
 // to turn back off again right away and nothing would happen.
-\end{lstlisting} 
+\end{Verbatim} 
 Again, relaunch the ship, copy the script as before, and run it again. This time you should see it activate your later upper stages correctly. (again, assuming you made the entire vessel with only liquidfuel engines.)
 
 \begin{center}
@@ -366,7 +366,7 @@ Point at the compass heading A.
 Pitch up a number of degrees from the horizon = to B.
 So for example, HEADING(45,10) would aim northeast, 10 degrees above the horizon. Combining this with the WHEN command from before, we get this section:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN SHIP:ALTITUDE > 10000 THEN {
     PRINT "Starting turn.  Aiming to 45 degree pitch.".
     LOCK STEERING TO HEADING(90,45). // east, 45 degrees pitch.
@@ -375,13 +375,13 @@ WHEN SHIP:ALTITUDE > 40000 THEN {
     PRINT "Starting flat part.  Aiming to horizon.".
     LOCK STEERING TO HEADING(90,0). // east, horizontal.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 Note that these lack the command PRESERVE like the previous WHEN example had. This is because we want these to trigger just once and then never again. There?s no point in constantly telling kOS to reset the steering to the same thing over and over as the script runs.
 
 Now, if you insert this new section to the script, we have a nice nifty example of a start of a launching script. Note that it works even if you insert it at the top of the script, because it sets up the triggers to occur LATER when the condition becomes true. They don?t execute right away:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // My First Launcher.
 
 WHEN SHIP:ALTITUDE > 10000 THEN {
@@ -416,7 +416,7 @@ WAIT UNTIL SHIP:ALTITUDE > 70000. // pause here until ship is high up.
 // back to manual piloting so that you can fly the ship by hand again.
 // If the program just ended here, then that would cause the throttle
 // to turn back off again right away and nothing would happen.
-\end{lstlisting} 
+\end{Verbatim} 
 
 And here is it in action:
 
@@ -459,7 +459,7 @@ Of course, one style does not fit all scenarios and the programmer will typicall
 \paragraph{1. Sequential Programs}
 These are programs that rely almost exclusively on WAIT UNTIL statements to go from one phase to the next.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 LOCK STEERING TO HEADING(0,90).
 LOCK THROTTLE TO 1.
 STAGE.
@@ -470,14 +470,14 @@ STAGE.
 WAIT UNTIL SHIP:ALTITUDE > 20000.
 LOCK THROTTLE TO 0.
 WAIT UNTIL FALSE. // CTRL+C to break out
-\end{lstlisting} 
+\end{Verbatim} 
 
 This example will take a two stage rocket up to 20km. The immediate thing to notice is that the programmer must have known that the first stage would cutoff between 10km and 20km. This is fine for a specific rocket but not too general and could end in disaster if the first stage cutoff occurs at say 5km. Certainly, one can write a program using this technique to take a specific rocket, put it into orbit and even perform a lot of fancy maneuvers, but adapting the code to different rockets may get complicated quickly.
 
 \paragraph{2. Loops with Condition Checking}
 Here, we introduce IF/ELSE logic into UNTIL loops:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
 LOCK THROTTLE TO 1.
 STAGE.
@@ -491,7 +491,7 @@ UNTIL SHIP:ALTITUDE > 20000 {
 }
 LOCK THROTTLE TO 0.
 WAIT UNTIL FALSE.
-\end{lstlisting} 
+\end{Verbatim} 
 
 This does the same thing as the previous example, but now it?s checking for a staging condition from the launch pad all the way to 20km. More than that, it will stage as many times as needed.
 
@@ -500,7 +500,7 @@ One can imagine that these types of UNTIL loops can become very complex with man
 3. Loops with Triggers
 In the above example, once the rocket reaches 10km, the steering is constantly being re-locked to HEADING(90,45). This works, but it only needs to be locked once. A possible improvement is to set up a trigger using a WHEN/THEN statement:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
 LOCK THROTTLE TO 1.
 STAGE.
@@ -514,11 +514,11 @@ UNTIL SHIP:ALTITUDE > 20000 {
 }
 LOCK THROTTLE TO 0.
 WAIT UNTIL FALSE.
-\end{lstlisting} 
+\end{Verbatim} 
 
 Now, when the rocket reaches 10km, the steering is set once and the trigger is removed from the active list of triggers. The staging condition can also be promoted to a trigger, keeping the trigger active after every stage using the PRESERVE keyword:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
     STAGE.
     PRESERVE.
@@ -532,7 +532,7 @@ WHEN SHIP:ALTITUDE > 10000 THEN {
 WAIT UNTIL SHIP:ALTITUDE > 20000.
 LOCK THROTTLE TO 0.
 WAIT UNTIL FALSE.
-\end{lstlisting} 
+\end{Verbatim} 
 
 Notice that the UNTIL loop was changed to a WAIT UNTIL statement since the program is small and all the logic of the triggers can be handled in a reasonable amount of time - there will be more on this topic later.
 
@@ -545,7 +545,7 @@ This section discusses two general guidelines to follow when starting out with m
 \paragraph{1. Minimize Time Spent in WHEN/THEN Blocks}
 Remember that WAIT statements are ignored when inside WHEN/THEN blocks. It is OK to loop over small lists (engines for example), but don?t let it get out of hand. The WHEN/THEN construct was designed to accommodate quick bits of code. Consider this bit of (non-working) code which tries to adjust the throttle based on the g-force as measured by a combination of the accelerometer and the negative gravioli detector:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 SET thrott TO 1.
 LOCK THROTTLE TO thrott.
 LOCK STEERING TO R(0,0,-90) + HEADING(90,90).
@@ -565,13 +565,13 @@ WHEN SHIP:ALTITUDE > 1000 THEN {
         WAIT 0.1.
     }
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 This looks reasonable. The throttle is set to maximum until 1km is reached at which point the throttle is adjusted every 0.1 seconds. If the gforce is off from the value of 1.2, then the throttle is either increased or decreased by a small amount. Running this on a test rocket merely produce the message ?Program ended.?
 
 Understanding why this does not work is important. Everything in a WHEN/THEN block is expected to complete in the current physics tick, but here we have a loop that is supposed to last until the ship reaches 40km. This example can be reworked by separating the triggers from the loop. The staging trigger was separated from the UNTIL loop as well - not strictly necessary, but recommended form:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
     STAGE.
     PRESERVE.
@@ -591,7 +591,7 @@ UNTIL SHIP:ALTITUDE > 40000 {
     SET thrott to thrott + dthrott.
     WAIT 0.1.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 Now this program should work. The variable dthrott had to be set to 0 in the beginning so that the throttle is kept at maximum until 1km, the UNTIL loop operates every 0.1 seconds, and the WHEN/THEN triggers are run only once when the condition is met. The take-away from this example is to keep WHEN/THEN blocks separate from UNTIL loops. Specifically, never put an UNTIL loop inside a WHEN/THEN block and it should be extremely rare to put a WHEN/THEN statement inside an UNTIL loop.
 
@@ -602,7 +602,7 @@ There is a lot of power in developing multi-level LOCK variables in combination 
 
 With this in mind, consider an extension of the example script in the previous section. This time, the g-force setpoint changes as the rocket climbs through 10km, 20km and 30km:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
     STAGE.
     PRESERVE.
@@ -631,11 +631,11 @@ UNTIL SHIP:ALTITUDE > 40000 {
     SET thrott to thrott + dthrott.
     WAIT 0.1.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 This example does what is expected of it without problems. But the ship?s altitude is being checked at least five times for every update, including the UNTIL loop check. Certaintly, the kOS CPU can keep up with this, however, one can imagine a whole series of WHEN/THEN statements which make use of complicated calculations based on atmospheric data or orbital mechanics. One way to minimize the trigger condition checking is to take strictly-sequential triggers and nest them:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
     STAGE.
     PRESERVE.
@@ -667,7 +667,7 @@ UNTIL SHIP:ALTITUDE > 40000 {
     SET thrott to thrott + dthrott.
     WAIT 0.1.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 Now this is quite elegant! The number of triggers have been reduced to two per update for the entire running of this script. The trigger at 1km sets up the next trigger which will happen at 10km which sets up then next at 20km and so on. This can save a lot of processing time for triggers that will happen sequentially. As a general rule, one should try to nest WHEN/THEN statements whenever possible. Again, both examples above will work, but when scripts start to have deep and complicated triggers, this nested construct can save it from the dreaded kOS trigger limit.
 
@@ -686,7 +686,7 @@ Those fuel-tank adapters are from the Modular Rocket Systems (MRS) addon, but st
 \paragraph{Proportional Feedback Loop (P-loop)}
 The example code from the Design Patterns Tutorial, with some slight modifications looks like the following:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // staging, throttle, steering, go
 WHEN STAGE:LIQUIDFUEL < 0.1 THEN {
     STAGE.
@@ -710,7 +710,7 @@ UNTIL SHIP:ALTITUDE > 40000 {
     SET thrott to thrott + dthrott.
     WAIT 0.1.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 The first several lines sets up a simple staging condition, puts the throttle to maximum, steers the rocket straight up and launches. The rocket is assumed to use only liquid fuel engines. After the rocket hits 1km, the script sets up the LOCK used in the P-loop which is updated every 0.1 seconds in the UNTIL loop. The use of LOCK variables makes this code fairly clean. When the script comes up to the first line in the UNTIL loop, i.e. ?SET thrott TO thrott + dthrott.?, the variable dthrott is evaluated which causes the LOCK on gforce to be evaluated which in-turn causes accvec to be evaluated.
 
@@ -718,7 +718,7 @@ The input to this feedback loop is the acceleration experienced by the ship (gfo
 
 In terms of a PID loop, the factor 1.2 is called the setpoint, gforce is the process variable and 0.05 is called the proportional gain. The setpoint and gain factors can be promoted to their own variables with names. Also, the code up to and including the ?WAIT UNTIL SHIP:ALTITUDE > 1000.? will be implied for the next few examples of code:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // P-loop
 SET g TO KERBIN:MU / KERBIN:RADIUS^2.
 LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
@@ -735,14 +735,14 @@ UNTIL SHIP:ALTITUDE > 40000 {
     SET thrott to thrott + dthrott.
     WAIT 0.1.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 This is not a big change, but it will set us up to include the integral and derivative terms in the next section.
 
 \paragraph{Proportional-Integral Feedback Loop (PI-loop)}
 Adding the integral term requires us to keep track of time. This is done by introducing a variable (t0) to store the time of the last iteration. Now, the throttle is changed only on iterations where some time has elapsed so the WAIT time in the UNTIL can be brought to 0.001. The offset of the gforce has been set to the variable P, and the integral gain to Ki.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // PI-loop
 SET g TO KERBIN:MU / KERBIN:RADIUS^2.
 LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
@@ -771,14 +771,14 @@ UNTIL SHIP:ALTITUDE > 40000 {
     }
     WAIT 0.001.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 Adding the integral term has the general effect of stabilizing the feedback loop, making it less prone to oscillating due to rapid changes in the process variable (gforce, in this case). This is usually at the expense of a longer settling time.
 
 \paragraph{Proportional-Integral-Derivative Feedback Loop (PID-loop)}
 Incorporating the derivative term (D) and derivative gain (Kd) requires an additional variable (P0) to keep track of the previous value of the proportional term (P).
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // PID-loop
 SET g TO KERBIN:MU / KERBIN:RADIUS^2.
 LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
@@ -812,7 +812,7 @@ UNTIL SHIP:ALTITUDE > 40000 {
     }
     WAIT 0.001.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 When tuned properly, the derivative term will cause the PID-loop to act quickly without causing problematic oscillations. Later in this tutorial, we will cover a way to tune a PID-loop using only the proportional term called the Zieger-Nichols method.
 
@@ -824,7 +824,7 @@ bounds on the throttle since it must stay in the range 0 to 1
 a deadband to avoid changing the throttle due to small fluctuations
 Of course, KSP is a simulator and small fluctuations are not observed in this particular loop. Indeed, the P-loop is sufficient in this example, but all these features are included here for illustration purposes and they could become useful for unstable aircraft or untested scenarios.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 // PID-loop
 SET g TO KERBIN:MU / KERBIN:RADIUS^2.
 LOCK accvec TO SHIP:SENSORS:ACC - SHIP:SENSORS:GRAV.
@@ -870,7 +870,7 @@ UNTIL SHIP:ALTITUDE > 40000 {
     }
     WAIT 0.001.
 }
-\end{lstlisting} 
+\end{Verbatim} 
 
 \paragraph{Tuning a PID-loop}
 We are going to start with the same rocket design we have been using so far and actually tune the PID-loop using the Ziegler-Nichols method. This is where we turn off the integral and derivative terms in the loop and bring the proportional gain (Kp) up from zero to the point where the loop causes a steady oscillation with a measured period (Tu). At this point, the proportional gain is called the ?ultimate gain? (Ku) and the actual gains (Kp, Ki and Kd) are set according to this table taken from wikipedia:
@@ -888,7 +888,7 @@ An immediate problem to overcome with this method is that it assumes a steady st
 
 The script we?ll use to tune the highly overpowered rocket shown will launch the rocket straight up (using SAS) and will log data to an output file until it reaches 30km at which point the log file will be copied to the archive and the program will terminate. Also, this time the feedback loop will be based on the more realistic ?atmospheric efficiency.? The log file will contain three columns: time since launch, offset of atmospheric efficiency from the ideal (in this case, 1.0) and the ship?s maximum thrust. The maximum thrust will increase monotonically with time (this rocket has only one stage) and we?ll use both as the x-axis when plotting the offset on the y-axis.
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 DECLARE PARAMETER Kp.
 
 LOCK g TO SHIP:BODY:MU / (SHIP:BODY:RADIUS + SHIP:ALTITUDE)^2.
@@ -927,14 +927,14 @@ UNTIL SHIP:ALTITUDE > 30000 {
     WAIT 0.001.
 }
 COPY throttle_log TO 0.
-\end{lstlisting} 
+\end{Verbatim} 
 
 Give this script a short name, something like ?tune.txt? so that running is simple:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 copy tune from 0.
 run tune(0.5).
-\end{lstlisting} 
+\end{Verbatim} 
 
 After every launch completes, you?ll have to go into the archive directory and rename the output log file. Something like $?throttle_log.txt? ?> ?throttle.01.log? will help if you increment the index number each time. To analyze the data, plot the offset (P) as a function of time (t). Here, we show the results for three values of Kp: 0.002, 0.016 and 0.160, including the maximum TWR when Kp = 0.002 as the top x-axis. The maximum TWR dependence on time is different for the three values of Kp, but not by a lot.
 $
@@ -978,13 +978,13 @@ Let?s try to automate one of the most common tasks in orbital maneuvering - exec
 
 So to start our script we need to get the next available maneuver node:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 set nd to nextnode().
-\end{lstlisting} 
+\end{Verbatim} 
 
 Our next step is to calculate how much time our vessel needs to burn at full throttle to execute the node:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 //print out node's basic parameters - ETA and deltaV
 print "Node in: " + round(nd:eta) + ", DeltaV: " + round(nd:deltav:mag).
 
@@ -994,19 +994,19 @@ set max_acc to ship:maxthrust/ship:mass.
 //now we just need to divide deltav:mag by our ship's max acceleration
 set burn_duration to nd:deltav:mag/max_acc.
 print "Estimated burn duration: " + round(burn_duration) + "s".
-\end{lstlisting} 
+\end{Verbatim} 
 
 So now we have our node?s deltav vector, ETA to the node and we calculated our burn duration. All that is left for us to do is wait until we are close to node?s ETA less half of our burn duration. But we want to write a universal script, and some of our current and/or future ships can be quite slow to turn, so let?s give us some time, 60 seconds, to prepare for the maneuver burn:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 wait until node:eta <= (burn_duration/2 + 60).
-\end{lstlisting} 
+\end{Verbatim} 
 
 This wait can be tedious and you?ll most likely end up warping some time, but we?ll leave kOS automation of warping for a given period of time to our readers.
 
 The wait has finished, and now we need to start turning our ship in the direction of the burn:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 set np to lookdirup(nd:deltav, ship:facing:topvector). //points to node, keeping roll the same.
 lock steering to np.
 
@@ -1015,11 +1015,11 @@ wait until abs(np:pitch - facing:pitch) < 0.15 and abs(np:yaw - facing:yaw) < 0.
 
 //the ship is facing the right direction, let's wait for our burn time
 wait until node:eta <= (burn_duration/2)
-\end{lstlisting} 
+\end{Verbatim} 
 
 Now we are ready to burn. It is usually done in the until loop, checking main parameters of the burn every iteration until the burn is complete:
 
-\begin{lstlisting}[frame=single,language=XML]
+\begin{Verbatim}[frame=single]
 //we only need to lock throttle once to a certain variable in the beginning of the loop, and adjust only the variable itself inside it
 set tset to 0.
 lock throttle to tset.
@@ -1067,6 +1067,6 @@ remove nd.
 
 //set throttle to 0 just in case.
 SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
-\end{lstlisting} 
+\end{Verbatim} 
 
 That is all, this short script can execute any maneuver node with 0.1 m/s dv precision or even better.
